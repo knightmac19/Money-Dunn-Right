@@ -1,0 +1,19 @@
+.container {
+  
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.blue {
+  color: blue;
+}
+
+.child {
+  /* margin: 500px; */
+  /* flex: 1; */
+  /* padding: 50px; */
+  width: '100%';
+  margin: auto
+}
