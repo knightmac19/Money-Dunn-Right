@@ -7,6 +7,7 @@ import {
   Route 
 } from "react-router-dom";
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 import Wrapper from './components/Wrapper';
 
 
@@ -15,7 +16,8 @@ function App() {
     <Router>
       <Wrapper>
         <Switch>
-          <Route exact path="/" component={Login} />
+          <Route exact path="/Login" component={Login} />
+          <Route exact path="/" component={Signup} />
         </Switch>
       </Wrapper>
     </Router>
