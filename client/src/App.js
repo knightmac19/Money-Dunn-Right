@@ -1,18 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { 
+  BrowserRouter as Router, 
+  Switch, 
+  Route 
+} from "react-router-dom";
 import Login from './pages/Login';
+import Wrapper from './components/Wrapper';
 
 
 function App() {
   return (
     <Router>
-      
+      <Wrapper>
         <Switch>
-          <Route exact path="/Login" component={Login} />
+          <Route exact path="/" component={Login} />
         </Switch>
-      
+      </Wrapper>
     </Router>
   );
 }
