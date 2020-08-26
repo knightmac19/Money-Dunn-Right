@@ -3,14 +3,23 @@ import "./style.css";
 import { Button } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import MyCard from '../../components/MyCard';
+import MainNav from '../../components/MainNav';
 
 
 
 const Signup = () => {
   return (
-    <MyCard 
-      
-    />
+    <div>
+      <MainNav />
+      <br/>
+      <br/>
+      <br/>
+      <MyCard />
+      <br/>
+      <br/>
+      <br/>
+      <p className="text-white">SIGNUP PAGE</p>
+    </div>
   );
 };
 
