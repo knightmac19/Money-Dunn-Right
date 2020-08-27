@@ -7,16 +7,14 @@ const MainNav = props => {
   return (
     <Navbar bg="primary" variant="dark" fixed="top" expand="md">
       <Navbar.Brand href="#home">MDR · Money Dunn Right</Navbar.Brand>
-      <Nav className="mr-auto">
-        <Nav.Link href="/Signup">NavLink Signup</Nav.Link>
-        <Nav.Link href="/Login">NavLink Login</Nav.Link>
-        <Nav.Link href="#features">Features</Nav.Link>
-        <Nav.Link href="#pricing">Pricing</Nav.Link>
+      <Nav className="ml-auto">
+        <Nav.Link href="/Signup">Signup</Nav.Link>
+        <Nav.Link href="/Login">Login</Nav.Link>
       </Nav>
-      <Form inline>
+      {/* <Form inline>
         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
         <Button variant="outline-light">Search</Button>
-      </Form>
+      </Form> */}
     </Navbar>
   );
 };

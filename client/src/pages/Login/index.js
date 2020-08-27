@@ -13,11 +13,7 @@ const Login = () => {
       <br/>
       <br/>
       <br/>
-      <MyCard />
-      <br/>
-      <br/>
-      <br/>
-      <p className="text-white">LOGIN PAGE</p>
+      <MyCard header={"Login"}/>
     </div>
   );
 };
