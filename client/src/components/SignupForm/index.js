@@ -12,26 +12,30 @@ const SignupForm = props => {
   const [password, setPassword] = useState("");
   const [hasPassword, setHasPassword] = useState();
 
-  const firstNameChange = e => {
-    setFirstName(e.target.value);
+  // var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+
+  const validateEmail = (email) => {
+
   };
 
-  const lastNameChange = e => {
-    setLastName(e.target.value);
+  const validatePassword = () => {
+
   };
 
-  const firstEmailChange = e => {
-    setFirstEmail(e.target.value);
-    setHasEmail(true);
+  const InvalidEmail = () => {
+    return (
+      <Form.Text className="text-danger">
+        Invalid Email
+      </Form.Text>
+    );
   };
 
-  const secondEmailChange = e => {
-    setSecondEmail(e.target.value);
-  };
-
-  const passwordChange = e => {
-    setPassword(e.target.value);
-    setHasPassword(true);
+  const InvalidPassword = () => {
+    return (
+      <Form.Text className="text-danger">
+        Invalid Password
+      </Form.Text>
+    );
   };
 
   const EmailsDontMatch = () => {
@@ -50,28 +54,19 @@ const SignupForm = props => {
     );
   };
 
+  const handleSubmit = () => {
+    console.log("handling submit")
+  };
+
   return (
     <div>
-      <Form>
-        <Form.Group controlId="firstEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control 
-            type="email" 
-            placeholder="Enter email" 
-            onChange={firstEmailChange}
-            value={firstEmail}
-          />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
-
-        <Form.Group controlId="firstName">
+      <Form onSubmit={handleSubmit}>
+      <Form.Group controlId="firstName">
           <Form.Label>First Name</Form.Label>
           <Form.Control 
             type="input" 
             placeholder="Enter First Name" 
-            onChange={firstNameChange}
+            onChange={e => setFirstName(e.target.value)}
             value={firstName}
           />
         </Form.Group>
@@ -81,9 +76,21 @@ const SignupForm = props => {
           <Form.Control 
             type="input" 
             placeholder="Enter Last Name" 
-            onChange={lastNameChange}
+            onChange={e => setLastName(e.target.value)}
             value={lastName}
           />
+        </Form.Group>
+        <Form.Group controlId="firstEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control 
+            type="email" 
+            placeholder="Enter email" 
+            onChange={e => { setFirstEmail(e.target.value); setHasEmail(true)} }
+            value={firstEmail}
+          />
+          <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+          </Form.Text>
         </Form.Group>
 
         {hasEmail ? 
@@ -93,7 +100,7 @@ const SignupForm = props => {
               <Form.Control 
                 type="email" 
                 placeholder="Enter email" 
-                onChange={secondEmailChange}
+                onChange={e => setSecondEmail(e.target.value)}
                 value={secondEmail}
               />
             </Form.Group>
@@ -110,7 +117,7 @@ const SignupForm = props => {
                 <Form.Control 
                   type="password"
                   placeholder="Password" 
-                  onChange={passwordChange}
+                  onChange={e => {setPassword(e.target.value); setHasPassword(true)} }
                   value={password}
                 />
               </Form.Group>
