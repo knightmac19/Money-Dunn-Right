@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./style.css";
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import MyCard from '../../components/MyCard';
 import MainNav from '../../components/MainNav';
-import EmailForm from '../../components/EmailForm';
+import SignupForm from '../../components/SignupForm';
 
 
 
 
 const Signup = () => {
+  const [redirectToLogin, setRedirectToLogin] = useState(false);
+
   return (
     <div>
+      {redirectToLogin ? <Redirect to="/Login" /> : null}
+
       <MainNav />
       <Container 
         fluid="sm"
@@ -19,7 +23,11 @@ const Signup = () => {
       >
         <Row >
           <Col>
-            <MyCard header={"Signup"} />    
+            <MyCard 
+              header={"Signup"} 
+              content={<SignupForm />}
+              textMuted={"MDR"}
+            />    
           </Col>
         </Row>
       </Container>

@@ -2,13 +2,23 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import "./style.css";
 
-const EmailForm = props => {
+const SignupForm = props => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [firstEmail, setFirstEmail] = useState("");
   const [hasEmail, setHasEmail] = useState();
   const [secondEmail, setSecondEmail] = useState("");
   
   const [password, setPassword] = useState("");
   const [hasPassword, setHasPassword] = useState();
+
+  const firstNameChange = e => {
+    setFirstName(e.target.value);
+  };
+
+  const lastNameChange = e => {
+    setLastName(e.target.value);
+  };
 
   const firstEmailChange = e => {
     setFirstEmail(e.target.value);
@@ -24,45 +34,11 @@ const EmailForm = props => {
     setHasPassword(true);
   };
 
-  const SecondEmailFormGroup = () => {
-    return (
-      <Form.Group controlId="secondEmail">
-        <Form.Label>Re-enter Email</Form.Label>
-        <Form.Control 
-          type="email" 
-          placeholder="Enter email" 
-          onChange={secondEmailChange}
-          value={secondEmail}
-        />
-      </Form.Group>
-    );
-  };
-
   const EmailsDontMatch = () => {
     return (
       <Form.Text className="text-danger">
-          Emails Don't Match
+          Emails Must Match
       </Form.Text>
-    );
-  };
-
-  const PasswordFormGroup = () => {
-    return (
-      <div>
-        <Form.Group controlId="formPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control 
-            type="password"
-            placeholder="Password" 
-            onChange={passwordChange}
-            value={password}
-          />
-        </Form.Group>
-
-        <Form.Group controlId="rememberUserCheckbox">
-          <Form.Check type="checkbox" label="Remember Me" />
-        </Form.Group>
-      </div>
     );
   };  
 
@@ -90,6 +66,26 @@ const EmailForm = props => {
           </Form.Text>
         </Form.Group>
 
+        <Form.Group controlId="firstName">
+          <Form.Label>First Name</Form.Label>
+          <Form.Control 
+            type="input" 
+            placeholder="Enter First Name" 
+            onChange={firstNameChange}
+            value={firstName}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="lastName">
+          <Form.Label>Last Name</Form.Label>
+          <Form.Control 
+            type="input" 
+            placeholder="Enter Last Name" 
+            onChange={lastNameChange}
+            value={lastName}
+          />
+        </Form.Group>
+
         {hasEmail ? 
           (
             <Form.Group controlId="secondEmail">
@@ -103,10 +99,9 @@ const EmailForm = props => {
             </Form.Group>
           ) 
         : null}
-        
-        
-        {/* { hasEmail ? <SecondEmailFormGroup /> : null} */}
+
         {secondEmail !== "" && firstEmail !== secondEmail ? <EmailsDontMatch /> : null}
+
 
         {secondEmail !== "" && firstEmail === secondEmail ? (
             <div>
@@ -134,4 +129,4 @@ const EmailForm = props => {
   );
 };
 
-export default EmailForm;
+export default SignupForm;

@@ -6,6 +6,6 @@
   background-position: center;
   background-size: cover;
   background-repeat: repeat;
-  min-height: 100vw;
+  min-height: 100%;
   /* padding-bottom: 3%; */
 }

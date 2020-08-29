@@ -1,7 +1,7 @@
 import React from 'react';
 import "./style.css";
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-import EmailForm from '../EmailForm';
+import { Container, Row, Col, Card } from 'react-bootstrap';
+
 
 
 const MyCard = props => {
@@ -13,9 +13,9 @@ const MyCard = props => {
             <Card className="text-center bg-dark">
               <Card.Header className="  text-white bg-primary my-card-header">{props.header}</Card.Header>
               <Card.Body className="bg-light">
-                <EmailForm />
+                {props.content}
               </Card.Body>
-              <Card.Footer className="text-muted">MDR</Card.Footer>
+              <Card.Footer className="text-muted">{props.textMuted}</Card.Footer>
             </Card>
           </Col>
         </Row>
