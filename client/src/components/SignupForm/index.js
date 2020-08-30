@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import "./style.css";
+import { connect } from 'react-redux';
 
 const SignupForm = props => {
   const [firstName, setFirstName] = useState("");
@@ -67,7 +68,7 @@ const SignupForm = props => {
             type="input" 
             placeholder="Enter First Name" 
             onChange={e => setFirstName(e.target.value)}
-            value={firstName}
+            value={props.firstName}
           />
         </Form.Group>
 
@@ -77,7 +78,7 @@ const SignupForm = props => {
             type="input" 
             placeholder="Enter Last Name" 
             onChange={e => setLastName(e.target.value)}
-            value={lastName}
+            value={props.lastName}
           />
         </Form.Group>
         <Form.Group controlId="firstEmail">
@@ -86,7 +87,7 @@ const SignupForm = props => {
             type="email" 
             placeholder="Enter email" 
             onChange={e => { setFirstEmail(e.target.value); setHasEmail(true)} }
-            value={firstEmail}
+            value={props.email}
           />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
@@ -136,4 +137,13 @@ const SignupForm = props => {
   );
 };
 
-export default SignupForm;
+const mapStateToProps = state => {
+  return {
+    firstName: state.firstName,
+    lastName: state.lastName,
+    email: state.email,
+    password: state.password
+  };
+};
+
+export default connect(mapStateToProps)(SignupForm);
