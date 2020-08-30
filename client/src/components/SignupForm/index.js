@@ -1,43 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import "./style.css";
 import { connect } from 'react-redux';
 
 const SignupForm = props => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [firstEmail, setFirstEmail] = useState("");
-  const [hasEmail, setHasEmail] = useState();
-  const [secondEmail, setSecondEmail] = useState("");
-  
-  const [password, setPassword] = useState("");
-  const [hasPassword, setHasPassword] = useState();
 
-  // var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+  // const InvalidEmail = () => {
+  //   return (
+  //     <Form.Text className="text-danger">
+  //       Invalid Email
+  //     </Form.Text>
+  //   );
+  // };
 
-  const validateEmail = (email) => {
-
-  };
-
-  const validatePassword = () => {
-
-  };
-
-  const InvalidEmail = () => {
-    return (
-      <Form.Text className="text-danger">
-        Invalid Email
-      </Form.Text>
-    );
-  };
-
-  const InvalidPassword = () => {
-    return (
-      <Form.Text className="text-danger">
-        Invalid Password
-      </Form.Text>
-    );
-  };
+  // const InvalidPassword = () => {
+  //   return (
+  //     <Form.Text className="text-danger">
+  //       Invalid Password
+  //     </Form.Text>
+  //   );
+  // };
 
   const EmailsDontMatch = () => {
     return (
@@ -67,7 +49,7 @@ const SignupForm = props => {
           <Form.Control 
             type="input" 
             placeholder="Enter First Name" 
-            onChange={e => setFirstName(e.target.value)}
+            onChange={props.writeFirstName}
             value={props.firstName}
           />
         </Form.Group>
@@ -77,7 +59,7 @@ const SignupForm = props => {
           <Form.Control 
             type="input" 
             placeholder="Enter Last Name" 
-            onChange={e => setLastName(e.target.value)}
+            onChange={props.writeLastName}
             value={props.lastName}
           />
         </Form.Group>
@@ -86,40 +68,40 @@ const SignupForm = props => {
           <Form.Control 
             type="email" 
             placeholder="Enter email" 
-            onChange={e => { setFirstEmail(e.target.value); setHasEmail(true)} }
-            value={props.email}
+            onChange={props.writeFirstEmail}
+            value={props.firstEmail}
           />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
           </Form.Text>
         </Form.Group>
 
-        {hasEmail ? 
+        {props.hasEmail ? 
           (
             <Form.Group controlId="secondEmail">
               <Form.Label>Re-enter Email</Form.Label>
               <Form.Control 
                 type="email" 
                 placeholder="Enter email" 
-                onChange={e => setSecondEmail(e.target.value)}
-                value={secondEmail}
+                onChange={props.writeSecondEmail}
+                value={props.secondEmail}
               />
             </Form.Group>
           ) 
         : null}
 
-        {secondEmail !== "" && firstEmail !== secondEmail ? <EmailsDontMatch /> : null}
+        {props.secondEmail !== "" && props.firstEmail !== props.secondEmail ? <EmailsDontMatch /> : null}
 
 
-        {secondEmail !== "" && firstEmail === secondEmail ? (
+        {props.secondEmail !== "" && props.firstEmail === props.secondEmail ? (
             <div>
               <Form.Group controlId="formPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control 
                   type="password"
                   placeholder="Password" 
-                  onChange={e => {setPassword(e.target.value); setHasPassword(true)} }
-                  value={password}
+                  onChange={props.writePassword}
+                  value={props.password}
                 />
               </Form.Group>
 
@@ -130,7 +112,7 @@ const SignupForm = props => {
           ) 
         : null}
 
-        {hasPassword ? <SignupButton /> : null}
+        {props.hasPassword ? <SignupButton /> : null}
 
       </Form>
     </div>
@@ -141,9 +123,38 @@ const mapStateToProps = state => {
   return {
     firstName: state.firstName,
     lastName: state.lastName,
-    email: state.email,
-    password: state.password
+    firstEmail: state.firstEmail,
+    secondEmail: state.secondEmail,
+    password: state.password,
+    hasEmail: state.hasEmail,
+    hasPassword: state.hasPassword
   };
 };
 
-export default connect(mapStateToProps)(SignupForm);
+const mapDispatchToProps = dispatch => {
+  return {
+    writeFirstName: (e) => dispatch({
+      type: 'WRITE_FIRSTNAME',
+      value: e.target.value
+    }),
+    writeLastName: (e) => dispatch({
+      type: 'WRITE_LASTNAME',
+      value: e.target.value
+    }),
+    writeFirstEmail: (e) => dispatch({
+      type: 'WRITE_FIRST_EMAIL',
+      value: e.target.value
+    }),
+    writeSecondEmail: (e) => dispatch({
+      type: 'WRITE_SECOND_EMAIL',
+      value: e.target.value
+    }),
+    writePassword: (e) => dispatch({
+      type: 'WRITE_PASSWORD',
+      value: e.target.value
+    }),
+    
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);
