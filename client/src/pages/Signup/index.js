@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "./style.css";
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import MyCard from '../../components/MyCard';
 import MainNav from '../../components/MainNav';
 import SignupForm from '../../components/SignupForm';
+import { connect } from 'react-redux';
 
 
-
-
-const Signup = () => {
-  const [redirectToLogin, setRedirectToLogin] = useState(false);
+const Signup = props => {
 
   return (
     <div>
-      {redirectToLogin ? <Redirect to="/Login" /> : null}
+      {props.redirectToLogin ? <Redirect to="/Login" /> : null}
 
       <MainNav />
       <Container 
@@ -36,4 +34,10 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+const mapStateToProps = state => {
+  return {
+    redirectToLogin: state.redirectToLogin
+  };
+}
+
+export default connect(mapStateToProps)(Signup);

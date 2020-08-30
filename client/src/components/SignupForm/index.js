@@ -39,6 +39,7 @@ const SignupForm = props => {
 
   const handleSubmit = () => {
     console.log("handling submit")
+    props.setLoginRedirect();
   };
 
   return (
@@ -153,7 +154,9 @@ const mapDispatchToProps = dispatch => {
       type: 'WRITE_PASSWORD',
       value: e.target.value
     }),
-    
+    setLoginRedirect: () => dispatch({
+      type: 'SET_LOGIN_REDIRECT'
+    })
   };
 };
 
