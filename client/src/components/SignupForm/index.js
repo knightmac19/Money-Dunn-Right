@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import "./style.css";
 import { connect } from 'react-redux';
+import * as actionTypes from '../../store/actions';
 
 const SignupForm = props => {
 
@@ -135,27 +136,27 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     writeFirstName: (e) => dispatch({
-      type: 'WRITE_FIRSTNAME',
+      type: actionTypes.WRITE_FIRSTNAME,
       value: e.target.value
     }),
     writeLastName: (e) => dispatch({
-      type: 'WRITE_LASTNAME',
+      type: actionTypes.WRITE_LASTNAME,
       value: e.target.value
     }),
     writeFirstEmail: (e) => dispatch({
-      type: 'WRITE_FIRST_EMAIL',
+      type: actionTypes.WRITE_FIRST_EMAIL,
       value: e.target.value
     }),
     writeSecondEmail: (e) => dispatch({
-      type: 'WRITE_SECOND_EMAIL',
+      type: actionTypes.WRITE_SECOND_EMAIL,
       value: e.target.value
     }),
     writePassword: (e) => dispatch({
-      type: 'WRITE_PASSWORD',
+      type: actionTypes.WRITE_PASSWORD,
       value: e.target.value
     }),
     setLoginRedirect: () => dispatch({
-      type: 'SET_LOGIN_REDIRECT'
+      type: actionTypes.SET_LOGIN_REDIRECT
     })
   };
 };
