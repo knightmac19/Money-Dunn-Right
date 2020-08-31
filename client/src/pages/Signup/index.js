@@ -36,7 +36,7 @@ const Signup = props => {
 
 const mapStateToProps = state => {
   return {
-    redirectToLogin: state.redirectToLogin
+    redirectToLogin: state.signup.redirectToLogin
   };
 }
 

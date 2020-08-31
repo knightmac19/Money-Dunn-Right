@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import MyCard from '../../components/MyCard';
 import MainNav from '../../components/MainNav';
+import { connect } from 'react-redux';
 
 
 const Login = () => {
@@ -18,4 +19,10 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    
+  };
+}
+
+export default connect(mapStateToProps)(Login);

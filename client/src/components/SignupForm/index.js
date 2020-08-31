@@ -123,13 +123,13 @@ const SignupForm = props => {
 
 const mapStateToProps = state => {
   return {
-    firstName: state.firstName,
-    lastName: state.lastName,
-    firstEmail: state.firstEmail,
-    secondEmail: state.secondEmail,
-    password: state.password,
-    hasEmail: state.hasEmail,
-    hasPassword: state.hasPassword
+    firstName: state.signup.firstName,
+    lastName: state.signup.lastName,
+    firstEmail: state.signup.firstEmail,
+    secondEmail: state.signup.secondEmail,
+    password: state.signup.password,
+    hasEmail: state.signup.hasEmail,
+    hasPassword: state.signup.hasPassword
   };
 };
 

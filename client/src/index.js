@@ -4,11 +4,18 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { createStore } from 'redux';
-import reducer from './store/reducer';
+import { createStore, combineReducers } from 'redux';
+// import reducer from './store/reducer';
 import { Provider } from 'react-redux';
+import loginReducer from './store/reducers/loginReducer';
+import signupReducer from './store/reducers/signupReducer';
 
-const store = createStore(reducer);
+const rootReducer = combineReducers({
+  login: loginReducer,
+  signup: signupReducer
+})
+
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>
