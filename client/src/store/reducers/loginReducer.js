@@ -2,7 +2,8 @@ import * as actionTypes from '../actions/loginActions';
 
 const initialState = {
   email:'',
-  password:''
+  password:'',
+  redirectToHome: false
 };
 
 const loginReducer = (state = initialState, action) => {
@@ -17,6 +18,12 @@ const loginReducer = (state = initialState, action) => {
     return {
       ...state,
         password: action.value
+    };
+
+    case actionTypes.SET_HOME_REDIRECT:
+    return {
+      ...state,
+        redirectToHome: true
     };
   }
 

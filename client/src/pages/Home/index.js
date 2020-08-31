@@ -1,17 +1,16 @@
 import React from 'react';
-import "./style.css";
-import { Container, Row, Col } from 'react-bootstrap';
+import { Button, Container, Row, Col } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import MyCard from '../../components/MyCard';
 import MainNav from '../../components/MainNav';
 import { connect } from 'react-redux';
 
 
-const Login = props => {
-  
+const Home = props => {
+
   return (
     <div>
-      {props.redirectToHome ? <Redirect to="/Home" /> : null}
+      {/* {props.redirectToLogin ? <Redirect to="/Login" /> : null} */}
 
       <MainNav />
       <Container 
@@ -21,22 +20,22 @@ const Login = props => {
         <Row >
           <Col>
             <MyCard 
-              header={"Login"} 
-              // content={<LoginForm />}
+              header={"Home"} 
               content={""}
               textMuted={"MDR"}
             />    
           </Col>
         </Row>
       </Container>
+
     </div>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    redirectToHome: state.login.redirectToHome
+    // redirectToLogin: state.signup.redirectToLogin
   };
 }
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Home);

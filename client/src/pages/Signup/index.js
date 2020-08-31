@@ -1,6 +1,6 @@
 import React from 'react';
 import "./style.css";
-import { Button, Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import MyCard from '../../components/MyCard';
 import MainNav from '../../components/MainNav';
