@@ -1,0 +1,2 @@
+export const WRITE_LOGIN_EMAIL = 'WRITE_LOGIN_EMAIL';
+export const WRITE_LOGIN_PASS = 'WRITE_LOGIN_PASS';

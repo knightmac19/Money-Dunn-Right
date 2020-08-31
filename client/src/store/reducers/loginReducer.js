@@ -1,23 +1,23 @@
-import * as actionTypes from '../actions';
+import * as actionTypes from '../actions/loginActions';
 
 const initialState = {
-  // firstName: '',
-  // lastName: '',
-  // firstEmail: '',
-  // secondEmail: '',
-  // password: '',
-  // hasEmail: false,
-  // hasPassword: false,
-  // redirectToLogin: false
+  email:'',
+  password:''
 };
 
 const loginReducer = (state = initialState, action) => {
   switch ( action.type ) {
-    // case actionTypes.WRITE_FIRSTNAME:
-    //   return {
-    //     ...state,
-    //     firstName: action.value
-    //   };
+    case actionTypes.WRITE_LOGIN_EMAIL:
+      return {
+        ...state,
+         email: action.value
+      };
+
+    case actionTypes.WRITE_LOGIN_PASS:
+    return {
+      ...state,
+        password: action.value
+    };
   }
 
   return state;

@@ -11,8 +11,9 @@ import loginReducer from './store/reducers/loginReducer';
 import signupReducer from './store/reducers/signupReducer';
 
 const rootReducer = combineReducers({
-  login: loginReducer,
-  signup: signupReducer
+  signup: signupReducer,
+  login: loginReducer
+  
 })
 
 const store = createStore(rootReducer);
