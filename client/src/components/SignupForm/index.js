@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import "./style.css";
 import { connect } from 'react-redux';
-import * as actionTypes from '../../store/actions';
+import * as actionTypes from '../../store/actions/signupActions';
 
 const SignupForm = props => {
 
@@ -38,15 +38,28 @@ const SignupForm = props => {
     );
   };
 
-  const handleSubmit = () => {
-    console.log("handling submit")
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    let newUser = {
+      firstName: props.firstName,
+      lastName: props.lastName,
+      email: props.firstEmail,
+      password: props.password
+    }
+    
+    console.log("handling submit");
+    console.log("user: ", newUser);
+    
     props.setLoginRedirect();
   };
 
   return (
     <div>
-      <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="firstName">
+      <Form 
+        onSubmit={e => handleSubmit(e)}
+      >
+        <Form.Group controlId="firstName">
           <Form.Label>First Name</Form.Label>
           <Form.Control 
             type="input" 
@@ -107,9 +120,9 @@ const SignupForm = props => {
                 />
               </Form.Group>
 
-              <Form.Group controlId="rememberUserCheckbox">
+              {/* <Form.Group controlId="rememberUserCheckbox">
                 <Form.Check type="checkbox" label="Remember Me" />
-              </Form.Group>
+              </Form.Group> */}
             </div>
           ) 
         : null}
