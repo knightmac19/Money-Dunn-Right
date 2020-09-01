@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import MyCard from '../../components/MyCard';
 import MainNav from '../../components/MainNav';
 import { connect } from 'react-redux';
+import LoginForm from '../../components/LoginForm';
 
 
 const Login = props => {
@@ -22,8 +23,7 @@ const Login = props => {
           <Col>
             <MyCard 
               header={"Login"} 
-              // content={<LoginForm />}
-              content={""}
+              content={<LoginForm />}
               textMuted={"MDR"}
             />    
           </Col>

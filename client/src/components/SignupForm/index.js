@@ -94,10 +94,10 @@ const SignupForm = props => {
         {props.hasEmail ? 
           (
             <Form.Group controlId="secondEmail">
-              <Form.Label>Re-enter Email</Form.Label>
+              <Form.Label>Confirm Email</Form.Label>
               <Form.Control 
                 type="email" 
-                placeholder="Enter email" 
+                placeholder="Confirm email" 
                 onChange={props.writeSecondEmail}
                 value={props.secondEmail}
               />
