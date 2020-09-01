@@ -6,22 +6,6 @@ import * as actionTypes from '../../store/actions/signupActions';
 
 const SignupForm = props => {
 
-  // const InvalidEmail = () => {
-  //   return (
-  //     <Form.Text className="text-danger">
-  //       Invalid Email
-  //     </Form.Text>
-  //   );
-  // };
-
-  // const InvalidPassword = () => {
-  //   return (
-  //     <Form.Text className="text-danger">
-  //       Invalid Password
-  //     </Form.Text>
-  //   );
-  // };
-
   const EmailsDontMatch = () => {
     return (
       <Form.Text className="text-danger">

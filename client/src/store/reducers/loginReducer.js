@@ -15,19 +15,20 @@ const loginReducer = (state = initialState, action) => {
       };
 
     case actionTypes.WRITE_LOGIN_PASS:
-    return {
-      ...state,
-        password: action.value
-    };
+      return {
+        ...state,
+          password: action.value
+      };
 
     case actionTypes.SET_HOME_REDIRECT:
-    return {
-      ...state,
-        redirectToHome: true
-    };
+      return {
+        ...state,
+          redirectToHome: true
+      };
+      
+    default: 
+      return state;
   }
-
-  return state;
 };
 
 export default loginReducer;
