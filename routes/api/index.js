@@ -1,10 +1,6 @@
 const router = require("express").Router();
-const matrix = require("./matrix");
-const student = require("./student");
-const teacher = require("./teacher");
+const user = require("./user.js");
 
-router.use("/matrix", matrix);
-router.use("/student", student);
-router.use("/teacher", teacher);
+router.use("/user", user);
 
 module.exports = router;
