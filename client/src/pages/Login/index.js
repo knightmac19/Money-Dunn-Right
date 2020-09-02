@@ -12,7 +12,7 @@ const Login = props => {
   
   return (
     <div>
-      {props.redirectToHome ? <Redirect to="/Home" /> : null}
+      {props.redirectToHome ? <Redirect to="/" /> : null}
 
       <MainNav />
       <Container 
