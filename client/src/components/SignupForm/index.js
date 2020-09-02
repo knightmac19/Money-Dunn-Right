@@ -3,6 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import "./style.css";
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/signupActions';
+import API from '../../utils/API';
 
 const SignupForm = props => {
 
@@ -30,12 +31,16 @@ const SignupForm = props => {
       lastName: props.lastName,
       email: props.firstEmail,
       password: props.password
-    }
-    
-    console.log("handling submit");
-    console.log("user: ", newUser);
-    
-    props.setLoginRedirect();
+    };
+
+    API.createUser(newUser)
+      .then(res => {
+        console.log('newUser: ', res)
+        props.setLoginRedirect();
+      })
+      .catch(err => {
+        console.log(err);
+      })
   };
 
   return (

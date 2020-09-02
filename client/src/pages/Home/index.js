@@ -6,6 +6,7 @@ import MainNav from '../../components/MainNav';
 import { connect } from 'react-redux';
 
 
+
 const Home = props => {
 
   return (

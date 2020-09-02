@@ -9,12 +9,13 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import loginReducer from './store/reducers/loginReducer';
 import signupReducer from './store/reducers/signupReducer';
+import userDetailsReducer from './store/reducers/userDetailsReducer';
 
 const rootReducer = combineReducers({
   signup: signupReducer,
-  login: loginReducer
-  
-})
+  login: loginReducer,
+  userDetails: userDetailsReducer
+});
 
 const store = createStore(rootReducer);
 
