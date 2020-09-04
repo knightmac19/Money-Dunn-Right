@@ -5,8 +5,8 @@ const userController = require('../../controllers/userController');
 router
   .route("/")
     .get(userController.findAll)
-    .post(userController.create)
-    .delete(userController.delete);
+    .post(userController.create);
+    // .delete(userController.delete);
 
 //Matches with /api/user/login
 //Login require a post instead of a get because it get will not accept req.body.

@@ -3,9 +3,18 @@ import { Form, Button } from 'react-bootstrap';
 import "./style.css";
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/loginActions';
+import * as actionDetailTypes from '../../store/actions/userDetailsActions';
 import API from '../../utils/API';
 
 const LoginForm = props => {
+
+  const getAuthenticatedUser = res => {
+    props.getFirstName(res);
+    props.getLastName(res);
+    props.getFullName(res);
+    props.getEmail(res);
+    props.getID(res);
+  }
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -16,19 +25,19 @@ const LoginForm = props => {
     };
     API.authenticateUser(userData)
       .then(res => {
-        // I want a new userData reducer that contains the top-level user data in state
-        console.log('authenticated User: ', res.userData);
-          // also, actions to query that data (mostly id) 
-        // after setting user's data in state, redirect to their homepage
+        
+        // console.log('authenticated User: ', res);
+        getAuthenticatedUser(res);
+        
       })
       .catch(err => {
         alert('There was an error with your email or password.');
         console.log(err.response.data);
         return;
+      })
+      .then(() => {
+        props.setHomeRedirect();
       });
-
-    // console.log('loginForm handle submit ', userLogin);
-    props.setHomeRedirect();
   };
 
   const LoginBtn = () => {
@@ -74,7 +83,14 @@ const LoginForm = props => {
 const mapStateToProps = state => {
   return {
     email: state.login.email,
-    password: state.login.password
+    password: state.login.password,
+    firstName: state.userDetails.firstName,
+    lastName: state.userDetails.lastName,
+    authEmail: state.userDetails.authEmail,
+    fullName: state.userDetails.fullName,
+    id: state.userDetails.id,
+    dateCreated: state.userDetails.dateCreated,
+    lastUpdated: state.userDetails.lastUpdated
   };
 };
 
@@ -90,6 +106,26 @@ const mapDispatchToProps = dispatch => {
     }),
     setHomeRedirect: () => dispatch({
       type: actionTypes.SET_HOME_REDIRECT
+    }),
+    getFirstName: res => dispatch({
+      type: actionDetailTypes.GET_FIRSTNAME,
+      value: res.data.firstName
+    }),
+    getLastName: res => dispatch({
+      type: actionDetailTypes.GET_LASTNAME,
+      value: res.data.lastName
+    }),
+    getFullName: res => dispatch({
+      type: actionDetailTypes.GET_FULLNAME,
+      value: res.data.FullName
+    }),
+    getEmail: res => dispatch({
+      type: actionDetailTypes.GET_AUTH_EMAIL,
+      value: res.data.email
+    }),
+    getID: res => dispatch({
+      type: actionDetailTypes.GET_ID,
+      value: res.data._id
     })
   };
 };

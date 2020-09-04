@@ -32,10 +32,11 @@ const SignupForm = props => {
       email: props.firstEmail,
       password: props.password
     };
+    console.log("signup let newUser= ", newUser);
 
     API.createUser(newUser)
       .then(res => {
-        console.log('newUser: ', res)
+        console.log('signup newUser: ', res)
         props.setLoginRedirect();
       })
       .catch(err => {
