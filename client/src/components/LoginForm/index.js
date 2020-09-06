@@ -26,7 +26,7 @@ const LoginForm = props => {
     API.authenticateUser(userData)
       .then(res => {
         
-        // console.log('authenticated User: ', res);
+        console.log('authenticated User res.data: ', res.data);
         getAuthenticatedUser(res);
         
       })
@@ -117,7 +117,7 @@ const mapDispatchToProps = dispatch => {
     }),
     getFullName: res => dispatch({
       type: actionDetailTypes.GET_FULLNAME,
-      value: res.data.FullName
+      value: res.data.fullName
     }),
     getEmail: res => dispatch({
       type: actionDetailTypes.GET_AUTH_EMAIL,
