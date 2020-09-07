@@ -36,6 +36,9 @@ module.exports = {
   findAll: (req, res) => {
     db.User.find(req.query)
       .populate('budgets')
+      .populate('bankAccounts')
+      .populate('creditCards')
+      .populate('currencies')
       .sort({ dateCreated: -1 })
       .then(dbUser => {
         res.json(dbUser);
@@ -48,6 +51,9 @@ module.exports = {
   findById: (req, res) => {
     db.User.findById(req.params.id)
       .populate('budgets')
+      .populate('bankAccounts')
+      .populate('creditCards')
+      .populate('currencies')
       .then(dbUser => {
         res.json(dbUser);
       })
@@ -65,6 +71,8 @@ module.exports = {
         const user = new db.User(req.body);
         user.setFullName();
         user.setLastUpdated();
+        user.setTotalCash();
+        user.setNetWorth();
 
         db.User.create(user)
           .then(dbUser => {

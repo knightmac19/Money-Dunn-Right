@@ -43,7 +43,7 @@ const Home = props => {
 
   return (
     <div>
-      {/* {!props.authenticatedID ? <Redirect to="/Login" /> : <div> */}
+      {!props.authenticatedID ? <Redirect to="/Login" /> : <div>
   
       <MainNav />
       <Container 
@@ -68,7 +68,7 @@ const Home = props => {
           </Col>
         </Row>
       </Container>
-      {/* </div>} */}
+      </div>}
     </div>
   );
 };

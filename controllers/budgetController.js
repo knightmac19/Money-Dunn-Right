@@ -20,9 +20,6 @@ module.exports = {
   findById: (req, res) => {
     db.Budget.findById(req.params.id)
       .populate('categories')
-      .populate('bankAccounts')
-      .populate('creditCards')
-      .populate('currencies')
       .populate('paychecks')
       .then(dbBudget => {
         res.json(dbBudget);
@@ -35,8 +32,6 @@ module.exports = {
   create: (req, res) => {
     const budget = new db.Budget(req.body);
     budget.setLastUpdated();
-    budget.setTotalCash();
-    budget.setNetWorth();
     budget.setTotalIncome();
     budget.setTotalSpent();
     budget.setSavedThisMonth();
