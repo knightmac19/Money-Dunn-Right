@@ -24,6 +24,10 @@ const CurrencySchema = new Schema({
     type: Number
   },
 
+  valueInPesos: {
+    type: Number
+  },
+
 }, { collection: "Currencies" });
 
 

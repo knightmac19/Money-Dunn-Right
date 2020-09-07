@@ -35,7 +35,7 @@ module.exports = {
 
   findAll: (req, res) => {
     db.User.find(req.query)
-      .populate('months')
+      .populate('budgets')
       .sort({ dateCreated: -1 })
       .then(dbUser => {
         res.json(dbUser);
@@ -47,7 +47,7 @@ module.exports = {
 
   findById: (req, res) => {
     db.User.findById(req.params.id)
-      .populate('months')
+      .populate('budgets')
       .then(dbUser => {
         res.json(dbUser);
       })

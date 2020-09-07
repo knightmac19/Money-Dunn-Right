@@ -37,32 +37,31 @@ export default {
 
   /**
    * * * * * * * * * * * * * * * * * * * * * *
-   * * * * * * Student  Routes * * * * * * * *
+   * * * * * * Budget  Routes * * * * * * * *
    * * * * * * * * * * * * * * * * * * * * * *
    * */
 
-  // getAllStudents: () => {
-  //   return axios.get("/api/student");
-  // },
+  getAllBudgets: () => {
+    return axios.get("/api/budget");
+  },
 
-  // createStudent: studentData => {
-  //   return axios.post("/api/student/", studentData);
-  // },
+  createBudget: budgetData => {
+    return axios.post("/api/budget/", budgetData);
+  },
 
-  // getStudent: id => {
-  //   return axios.get("/api/student/" + id);
-  // },
+  getBudget: id => {
+    return axios.get("/api/budget/" + id);
+  },
 
-  // updateStudent: ({ StudentID, firstName, lastName }) => {
-  //   return axios.put("/api/student/" + StudentID, {
-  //     firstName: firstName,
-  //     lastName: lastName
-  //   });
-  // },
+  updateBudget: ({ BudgetID }) => {
+    return axios.put("/api/budget/" + BudgetID, {
+      // object of data to be updated
+    });
+  },
 
-  // deleteStudent: id => {
-  //   return axios.delete("/api/student/", { data: { id } });
-  // },
+  deleteBudget: id => {
+    return axios.delete("/api/budget/", { data: { id } });
+  },
 
   /**
    * * * * * * * * * * * * * * * * * * * * * *

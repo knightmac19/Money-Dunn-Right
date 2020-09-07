@@ -64,8 +64,8 @@ CategorySchema.methods.setSpent = function(expenses) {
   // return this.spent;
 };
 
-CategorySchema.methods.setToSpend = function(alloted, spent) {
-  this.toSpend = alloted - spent;
+CategorySchema.methods.setToSpend = function() {
+  this.toSpend = this.alloted - this.spent;
   return this.toSpend;
 };
 

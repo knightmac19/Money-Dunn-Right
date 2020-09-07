@@ -54,7 +54,8 @@ const BudgetSchema = new Schema({
   ],
 
   netWorth: {
-    type: Number
+    type: Number,
+    default: 0
   },
 
   currencies: [
@@ -66,13 +67,29 @@ const BudgetSchema = new Schema({
   ],
 
   totalCash: {
-    type: Number
+    type: Number,
+    default: 0
   },
 
-  income: [
+  totalIncome: {
+    type: Number,
+    default: 0
+  },
+
+  totalSpent: {
+    type: Number,
+    default: 0
+  },
+
+  savedThisMonth: {
+    type: Number,
+    default: 0
+  },
+
+  paychecks: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Income'
+      ref: 'Paycheck'
     }
   ]
 });
@@ -82,16 +99,32 @@ BudgetSchema.methods.setLastUpdated = function() {
   return this.lastUpdated;
 };
 
-BudgetSchema.methods.setTotalCash = function(currencies) {
+BudgetSchema.methods.setTotalCash = function() {
   // sum total value of each currency to total value of all other currencies
     // this.totalCash = 
-    // return this.totalCash;
+    return this.totalCash;
 };
 
-BudgetSchema.methods.setNetWorth = function(bankAccounts, totalCash, creditCards) {
+BudgetSchema.methods.setNetWorth = function() {
   // 
     // this.netWorth = bankAccounts + totalCash - creditCards
-    // return this.netWorth;
+    return this.netWorth;
+};
+
+BudgetSchema.methods.setTotalIncome = function() {
+  // sumAll(paycheck.amount);
+    // this.netWorth = bankAccounts + totalCash - creditCards
+    return this.totalIncome;
+};
+
+BudgetSchema.methods.setTotalSpent = function() {
+  // sumAll(category.spent)
+  return this.totalSpent;
+};
+
+BudgetSchema.methods.setSavedThisMonth = function() {
+  this.savedThisMonth = this.totalIncome - this.totalSpent;
+  return this.savedThisMonth;
 };
 
 const Budget = mongoose.model("Budget", BudgetSchema);

@@ -2,11 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ExpenseSchema = new Schema({
-  title: {
-    type: String,
-    trim: true,
-    required: true
-  },
 
   dateCreated: {
     type: Date,
@@ -35,6 +30,10 @@ const ExpenseSchema = new Schema({
     type: String
   },
 
+  note: {
+    type: String
+  },
+
   paidWith: [
     {
       type: Schema.Types.ObjectId,
@@ -48,11 +47,9 @@ const ExpenseSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: "Currency"
     }
-  ],
+  ]
 
-  note: {
-    type: String
-  }
+  
 
 }, { collection: "Expenses" });
 

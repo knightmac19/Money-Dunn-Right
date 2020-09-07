@@ -11,7 +11,7 @@ const PaycheckSchema = new Schema({
     type: Date
   },
 
-  IncomeID: {
+  BudgetID: {
     type: String
   },
 
@@ -25,27 +25,18 @@ const PaycheckSchema = new Schema({
     required: true
   },
 
-  earnedBy: {
+  paidTo: {
     type: String,
     required: true
   },
 
   note: {
-    type: String
-  },
-
-  addedTo: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "BankAccount"
-    },
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Currency"
-    }
-  ],
+    type: String,
+    required: true
+  }
 
 }, { collection: "Paychecks" });
+
 
 
 PaycheckSchema.methods.setLastUpdated = function() {

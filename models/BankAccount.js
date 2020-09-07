@@ -52,7 +52,7 @@ BankAccountSchema.methods.setLastUpdated = function() {
 };
 
 BankAccountSchema.methods.updateBalance = function() {
-  // this.balance = activity.deposits + activity.withdrawals
+  // this.balance = activity.deposits - activity.withdrawals
   return this.balance;
 };
 

@@ -9,7 +9,6 @@ module.exports = {
   Debit: require('./Debit'),
   Deposit: require('./Deposit'),
   Expense: require('./Expense'),
-  Income: require('./Income'),
   Paycheck: require('./Paycheck'),
   Withdrawal: require('./Withdrawal'),
 };

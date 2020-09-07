@@ -2,12 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const WithdrawalSchema = new Schema({
-  title: {
-    type: String,
-    trim: true,
-    required: true
-  },
-
   dateCreated: {
     type: Date,
     default: Date.now
