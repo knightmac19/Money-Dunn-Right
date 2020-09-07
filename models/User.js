@@ -58,7 +58,14 @@ const UserSchema = new Schema({
 
   lastUpdated: {
     type: Date
-  }
+  },
+
+  budgets: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Budget"
+    }
+  ]
 });
 
 UserSchema.methods.setFullName = function() {

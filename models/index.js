@@ -1,3 +1,15 @@
 module.exports = {
-  User: require('./User')
+  User: require('./User'),
+  BankAccount: require('./BankAccount'),
+  Budget: require('./Budget'),
+  Category: require('./Category'),
+  Credit: require('./Credit'),
+  CreditCard: require('./CreditCard'),
+  Currency: require('./Currency'),
+  Debit: require('./Debit'),
+  Deposit: require('./Deposit'),
+  Expense: require('./Expense'),
+  Income: require('./Income'),
+  Paycheck: require('./Paycheck'),
+  Withdrawal: require('./Withdrawal'),
 };
