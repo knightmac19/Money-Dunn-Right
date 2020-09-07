@@ -16,13 +16,13 @@ import Wrapper from './components/Wrapper';
 function App() {
   return (
     <Router>
-      <Wrapper>
+      {/* <Wrapper> */}
         <Switch>
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Signup" component={Signup} />
           <Route exact path="/" component={Home} />
         </Switch>
-      </Wrapper>
+      {/* </Wrapper> */}
     </Router>
   );
 }

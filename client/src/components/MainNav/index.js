@@ -1,10 +1,11 @@
 import React from 'react';
+import './style.css';
 
 import { Navbar, Nav } from 'react-bootstrap';
 
 const MainNav = props => {
   return (
-    <Navbar bg="primary" variant="dark" fixed="top" expand="md">
+    <Navbar bg="primary" variant="dark" fixed="top" expand="md" className=".my-nav">
       <Navbar.Brand href="#home">MDR · Money Dunn Right</Navbar.Brand>
       <Nav className="ml-auto">
         <Nav.Link href="/Signup">Signup</Nav.Link>

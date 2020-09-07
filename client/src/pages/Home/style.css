@@ -1,0 +1,17 @@
+.my-container {
+  min-width: 1076px;
+  max-width: 2048px;
+  
+  /* max-height: 90vh;
+  min-height: 90vh; */
+}
+
+.my-row {
+  min-width: 100vw;
+  max-width: fit-content;
+  margin-top:100px;
+}
+
+.my-col-background {
+  background-color: blueviolet;
+}
