@@ -17,7 +17,7 @@ const CreditCardSchema = new Schema({
     type: Date
   },
 
-  BudgetID: {
+  UserID: {
     type: String
   },
 

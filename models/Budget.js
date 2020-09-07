@@ -39,38 +39,6 @@ const BudgetSchema = new Schema({
     }
   ],
 
-  bankAccounts: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'BankAccount'
-    }
-  ],
-
-  creditCards: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'CreditCard'
-    }
-  ],
-
-  netWorth: {
-    type: Number,
-    default: 0
-  },
-
-  currencies: [
-    // convert all currencies to US dollar
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Currency'
-    }
-  ],
-
-  totalCash: {
-    type: Number,
-    default: 0
-  },
-
   totalIncome: {
     type: Number,
     default: 0
@@ -97,18 +65,6 @@ const BudgetSchema = new Schema({
 BudgetSchema.methods.setLastUpdated = function() {
   this.lastUpdated = Date.now();
   return this.lastUpdated;
-};
-
-BudgetSchema.methods.setTotalCash = function() {
-  // sum total value of each currency to total value of all other currencies
-    // this.totalCash = 
-    return this.totalCash;
-};
-
-BudgetSchema.methods.setNetWorth = function() {
-  // 
-    // this.netWorth = bankAccounts + totalCash - creditCards
-    return this.netWorth;
 };
 
 BudgetSchema.methods.setTotalIncome = function() {

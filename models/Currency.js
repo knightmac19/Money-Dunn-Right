@@ -16,7 +16,7 @@ const CurrencySchema = new Schema({
     type: Date
   },
 
-  BudgetID: {
+  UserID: {
     type: String
   },
 

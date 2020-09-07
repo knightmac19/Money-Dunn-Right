@@ -60,10 +60,42 @@ const UserSchema = new Schema({
     type: Date
   },
 
+  totalCash: {
+    type: Number,
+    default: 0
+  },
+
+  netWorth: {
+    type: Number,
+    default: 0
+  },
+
   budgets: [
     {
       type: Schema.Types.ObjectId,
       ref: "Budget"
+    }
+  ],
+
+  currencies: [
+    // convert all currencies to US dollar
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Currency'
+    }
+  ],
+
+  bankAccounts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'BankAccount'
+    }
+  ],
+
+  creditCards: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'CreditCard'
     }
   ]
 });
@@ -76,6 +108,18 @@ UserSchema.methods.setFullName = function() {
 UserSchema.methods.setLastUpdated = function() {
   this.lastUpdated = Date.now();
   return this.lastUpdated;
+};
+
+UserSchema.methods.setTotalCash = function() {
+  // sum total value of each currency to total value of all other currencies
+    // this.totalCash = 
+    return this.totalCash;
+};
+
+UserSchema.methods.setNetWorth = function() {
+  // 
+    // this.netWorth = bankAccounts + totalCash - creditCards
+    return this.netWorth;
 };
 
 const User = mongoose.model('User', UserSchema);
