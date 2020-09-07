@@ -29,6 +29,9 @@
   },
   "homepage": "https://github.com/knightmac19/Money-Dunn-Right#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "axios": "^0.20.0",
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",

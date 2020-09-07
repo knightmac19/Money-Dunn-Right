@@ -2,9 +2,10 @@ import React from 'react';
 import './style.css';
 import { Container, Row, Col, Table } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
-import MyCard from '../../components/MyCard';
+// import MyCard from '../../components/MyCard';
 import MainNav from '../../components/MainNav';
 import { connect } from 'react-redux';
+import BudgetsAccordion from '../../components/BudgetsAccordion';
 
 const Home = props => {
   
@@ -51,9 +52,9 @@ const Home = props => {
       >
         <Row className="my-row">
           <Col>
-            <div className="my-col-background">
-              <p className="text-white">Column 1.5</p>
-            </div>
+            <BudgetsAccordion 
+
+            />
           </Col>
           <Col md={9}>
             <div className="my-col-background">
