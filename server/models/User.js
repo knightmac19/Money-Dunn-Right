@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const UserSchema = new Schema(
+const userSchema = new Schema(
     {
         firstname: {
             type: String,
@@ -53,11 +53,11 @@ const UserSchema = new Schema(
     }
 )
 
-UserSchema.virtual('paychecks').get(function () {
+userSchema.virtual('paychecks').get(function () {
     return this.income.length;
 });
 
-UserSchema.virtual('projected-paychecks').get(function () {
+userSchema.virtual('projected-paychecks').get(function () {
     return this.projectedIncome.length;
 });
 
