@@ -12,7 +12,7 @@ const router = require("express").Router();
 // const subCategoryRoutes = require("./subCategory-routes");
 
 const userRoutes = require("./user-routes");
-// const yearRoutes = require("./year-routes");
+const yearRoutes = require("./year-routes");
 
 // router.use("/account", accountRoutes);
 // router.use("/category", categoryRoutes);
@@ -26,6 +26,6 @@ const userRoutes = require("./user-routes");
 // router.use("/subCategory", subCategoryRoutes);
 
 router.use("/users", userRoutes);
-// router.use("/year", yearRoutes);
+router.use("/years", yearRoutes);
 
 module.exports = router;
