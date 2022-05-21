@@ -109,17 +109,23 @@ const userController = {
   },
 
   // remove parter from a user's partner list
-  removePartner(req, res) {
-    User.findOneAndUpdate(
+  async removeMutualPartners(req, res) {
+     await User.findOneAndUpdate(
+      { _id: req.params.partnerId }, 
+      { $pull: { partners: req.params.userId } },
+      { new: true }
+    )
+
+    await User.findOneAndUpdate(
       { _id: req.params.userId }, 
       { $pull: { partners: req.params.partnerId } },
       { new: true }
     )
     .then((dbUserData) => {
       if (!dbUserData) {
-        return res.status(404).json({ message: 'No user with this id!' });
+        return res.status(404).json({ message: 'No user with this id' });
       }
-      res.json(dbUserData);
+      res.json(dbUserData)
     })
     .catch((err) => {
       console.log(err);
