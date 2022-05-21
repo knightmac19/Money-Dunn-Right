@@ -26,6 +26,12 @@ const userSchema = new Schema(
                 ref: 'Account'
             }
         ],
+        partners: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'User'
+            }
+        ],
         income: [
             {
                 type: Schema.Types.ObjectId,

@@ -77,6 +77,55 @@ const userController = {
         res.status(500).json(err);
       });
   },
+
+  // add a partner (another user) to this user's partner's array
+  addMutualPartners(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params.userId }, 
+      { $addToSet: { partners: req.params.partnerId } },
+      { new: true }
+    )
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        return res.status(404).json({ message: 'No user with this id' });
+      }
+      return User.findOneAndUpdate(
+        { _id: dbUserData.partners[dbUserData.partners.length - 1] }, 
+        { $addToSet: { partners: dbUserData._id } },
+        { new: true }
+      );
+    })
+    .then((resData) => {
+      if (!resData) {
+        return res.status(404).json({ message: 'No partner with this id!' });
+      }
+
+      res.json(resData)
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  },
+
+  // remove parter from a user's partner list
+  removePartner(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params.userId }, 
+      { $pull: { partners: req.params.partnerId } },
+      { new: true }
+    )
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        return res.status(404).json({ message: 'No user with this id!' });
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  }
 };
 
 module.exports = userController;
