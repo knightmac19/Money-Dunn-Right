@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const monthSchema = require('./Month');
 
 const userSchema = new Schema(
     {
@@ -20,36 +21,42 @@ const userSchema = new Schema(
             unique: true,
             match: [/([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})/g, 'Must match an email address!']
         },
-        accounts: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Account'
-            }
-        ],
+        // accounts: [
+        //     {
+        //         type: Schema.Types.ObjectId,
+        //         ref: 'Account'
+        //     }
+        // ],
         partners: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'User'
             }
         ],
-        income: [
+        months: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Income'
+                ref: 'Month'
             }
         ],
-        pesos: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Pesos'
-            }
-        ],
-        projectedIncome: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'ProjectedIncome'
-            }
-        ]
+        // income: [
+        //     {
+        //         type: Schema.Types.ObjectId,
+        //         ref: 'Income'
+        //     }
+        // ],
+        // pesos: [
+        //     {
+        //         type: Schema.Types.ObjectId,
+        //         ref: 'Pesos'
+        //     }
+        // ],
+        // projectedIncome: [
+        //     {
+        //         type: Schema.Types.ObjectId,
+        //         ref: 'ProjectedIncome'
+        //     }
+        // ]
     },
     {
         toJSON: {
@@ -59,13 +66,13 @@ const userSchema = new Schema(
     }
 )
 
-userSchema.virtual('paychecks').get(function () {
-    return this.income.length;
-});
+// userSchema.virtual('paychecks').get(function () {
+//     return this.income.length;
+// });
 
-userSchema.virtual('projected-paychecks').get(function () {
-    return this.projectedIncome.length;
-});
+// userSchema.virtual('projected-paychecks').get(function () {
+//     return this.projectedIncome.length;
+// });
 
 
 const User = model('User', userSchema);
