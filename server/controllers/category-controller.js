@@ -17,20 +17,20 @@ const categoryController = {
   },
 
   // get single Category by id
-//   getSingleCategory(req, res) {
-//     Category.findOne({ _id: req.params.categoryId })
-//       .select("-__v")
-//       .then((dbCategoryData) => {
-//         if (!dbCategoryData) {
-//           return res.status(404).json({ message: "No category with this id!" });
-//         }
-//         res.json(dbCategoryData);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//         res.status(500).json(err);
-//       });
-//   },
+  getSingleCategory(req, res) {
+    Category.findOne({ _id: req.params.categoryId })
+      .select("-__v")
+      .then((dbCategoryData) => {
+        if (!dbCategoryData) {
+          return res.status(404).json({ message: "No category with this id!" });
+        }
+        res.json(dbCategoryData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  },
 
   // create a new Category
   createCategory(req, res) {

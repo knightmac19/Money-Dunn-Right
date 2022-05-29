@@ -11,7 +11,10 @@ const {
 router.route('/').get(getCategories).post(createCategory);
 
 // /api/categories/:categoryId
-router.route('/:categoryId').get(getSingleCategory).put(updateCategory).delete(deleteCategory);
+router.route('/:categoryId')
+  .get(getSingleCategory)
+  // .put(updateCategory)
+  // .delete(deleteCategory);
 
 
 module.exports = router;
