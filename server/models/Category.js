@@ -9,12 +9,12 @@ const categorySchema = new Schema(
             trim: true
         },
         totalAllotted: {
-            type: Number,
+            type: Schema.Types.Decimal128,
             required: false,
             unique: false
         },
         totalSpent: {
-            type: Number,
+            type: Schema.Types.Decimal128,
             required: false,
             unique: false
         },
@@ -34,13 +34,9 @@ const categorySchema = new Schema(
     }
 )
 
-// categorySchema.virtual('paychecks').get(function () {
-//     return this.income.length;
-// });
-
-// categorySchema.virtual('projected-paychecks').get(function () {
-//     return this.projectedIncome.length;
-// });
+categorySchema.virtual('leftToSpend').get(function () {
+    return parseFloat(this.totalAllotted - this.totalSpent).toFixed(2);
+});
 
 
 const Category = model('Category', categorySchema);
