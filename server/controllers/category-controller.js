@@ -92,20 +92,20 @@ const categoryController = {
 //   },
 
   //   remove a Category
-//   deleteCategory(req, res) {
-//     Category.findOneAndDelete({ _id: req.params.categoryId })
-//       .then((dbCategoryData) => {
-//         if (!dbCategoryData) {
-//           return res.status(404).json({ message: "No category with this id!" });
-//         }
+  deleteCategory(req, res) {
+    Category.findOneAndDelete({ _id: req.params.categoryId })
+      .then((dbCategoryData) => {
+        if (!dbCategoryData) {
+          return res.status(404).json({ message: "No category with this id!" });
+        }
 
-//         res.json(dbCategoryData);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//         res.status(500).json(err);
-//       });
-//   },
+        res.json(dbCategoryData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  },
 };
 
 module.exports = categoryController;
