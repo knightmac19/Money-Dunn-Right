@@ -13,8 +13,8 @@ router.route('/').get(getCategories).post(createCategory);
 // /api/categories/:categoryId
 router.route('/:categoryId')
   .get(getSingleCategory)
-  .delete(deleteCategory);
-  // .put(updateCategory)
+  .delete(deleteCategory)
+  .put(updateCategory);
   
 
 

@@ -50,46 +50,29 @@ const categoryController = {
   },
 
   // update a Category
-//   async updateCategory(req, res) {
-//     const previousOwnerEmail = await Category.findById(req.params.categoryId);
-//     const newOwnerEmail = req.body.ownerEmail;
-
-//     if (previousOwnerEmail.ownerEmail !== newOwnerEmail) {
-//       await User.findOneAndUpdate(
-//         { email: previousOwnerEmail.ownerEmail },
-//         { $pull: { months: req.params.categoryId } },
-//         { new: true }
-//       );
-
-//       await User.findOneAndUpdate(
-//         { email: newOwnerEmail },
-//         { $push: { months: req.params.categoryId } },
-//         { new: true }
-//       );
-//     }
-
-//     await Category.findOneAndUpdate(
-//       { _id: req.params.categoryId },
-//       {
-//         $set: req.body,
-//       },
-//       {
-//         runValidators: true,
-//         new: true,
-//       }
-//     )
-
-//       .then((dbCategoryData) => {
-//         if (!dbCategoryData) {
-//           return res.status(404).json({ message: "No category with this id!" });
-//         }
-//         res.json(dbCategoryData);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//         res.status(500).json(err);
-//       });
-//   },
+  updateCategory(req, res) {
+  
+    Category.findOneAndUpdate(
+      { _id: req.params.categoryId },
+      {
+        $set: req.body,
+      },
+      {
+        runValidators: true,
+        new: true,
+      }
+    )
+      .then((dbCategoryData) => {
+        if (!dbCategoryData) {
+          return res.status(404).json({ message: "No category with this id!" });
+        }
+        res.json(dbCategoryData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  },
 
   //   remove a Category
   deleteCategory(req, res) {
