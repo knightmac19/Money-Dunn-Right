@@ -52,15 +52,14 @@ const subCategoryController = {
     let currentCategories = await Category.find();
 
     let newArr = await currentCategories.filter(function (el) {
-      return el.name === req.body.parentCategory
+      return el.name === req.body.parentCategory;
     });
 
     if (newArr.length == 0) {
       await Category.create({ name: req.body.parentCategory });
     }
 
-    console.log(newArr);
-
+    // console.log(newArr);
 
     await SubCategory.create(req.body)
 
@@ -68,8 +67,8 @@ const subCategoryController = {
         return Category.findOneAndUpdate(
           { name: req.body.parentCategory },
           { $push: { subCategories: dbSubCatData._id } },
-          { new: true },
-        )
+          { new: true }
+        );
       })
 
       .then((dbSubCatData) => {
@@ -115,14 +114,13 @@ const subCategoryController = {
   deleteSubCategory(req, res) {
     SubCategory.findOneAndDelete({ _id: req.params.subCategoryId })
 
-      // .then((dbSubCatData) => {
-      //   return Category.findOneAndUpdate(
-      //     { name: req.body.parentCategory },
-      //     { $pull: { subCategories: dbSubCatData._id } },
-      //     { new: true },
-      //   )
-      // })
-
+      .then((dbSubCatData) => {
+        return Category.findOneAndUpdate(
+          { name: dbSubCatData.parentCategory },
+          { $pull: { subCategories: dbSubCatData._id } },
+          { new: true }
+        );
+      })
       .then((dbSubCatData) => {
         if (!dbSubCatData) {
           return res
@@ -130,13 +128,7 @@ const subCategoryController = {
             .json({ message: "No sub-category with this id!" });
         }
 
-        return Category.findOneAndUpdate(
-              { name: dbSubCatData.parentCategory },
-              { $pull: { subCategories: dbSubCatData._id } },
-              { new: true },
-            );
-
-        // res.json(dbSubCatData);
+        res.json(dbSubCatData);
       })
       .catch((err) => {
         console.log(err);
