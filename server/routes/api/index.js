@@ -9,7 +9,7 @@ const categoryRoutes = require("./category-routes");
 const monthRoutes = require("./month-routes");
 // const pesosRoutes = require("./pesos-routes");
 // const projectedIncomeRoutes = require("./projectedIncome-routes");
-// const subCategoryRoutes = require("./subCategory-routes");
+const subCategoryRoutes = require("./subCategory-routes");
 
 const userRoutes = require("./user-routes");
 const yearRoutes = require("./year-routes");
@@ -25,7 +25,7 @@ router.use("/categories", categoryRoutes);
 router.use("/months", monthRoutes);
 // router.use("/pesos", pesosRoutes);
 // router.use("/projectedIncome", projectedIncomeRoutes);
-// router.use("/subCategory", subCategoryRoutes);
+router.use("/subCategories", subCategoryRoutes);
 
 router.use("/users", userRoutes);
 router.use("/years", yearRoutes);

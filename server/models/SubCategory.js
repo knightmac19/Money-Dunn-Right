@@ -22,6 +22,10 @@ const subCategorySchema = new Schema(
             type: Schema.Types.Decimal128,
             required: false,
             unique: false
+        },
+        parentCategory: {
+            type: String,
+            required: true
         }
         
     },
