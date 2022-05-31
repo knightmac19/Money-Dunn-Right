@@ -48,8 +48,21 @@ const subCategoryController = {
   },
 
   // create a new SubCategory and add its id to the named Category's 'subCategories' array
-  createSubCategory(req, res) {
-    SubCategory.create(req.body)
+  async createSubCategory(req, res) {
+    let currentCategories = await Category.find();
+
+    let newArr = await currentCategories.filter(function (el) {
+      return el.name === req.body.parentCategory
+    });
+
+    if (newArr.length == 0) {
+      await Category.create({ name: req.body.parentCategory });
+    }
+
+    console.log(newArr);
+
+
+    await SubCategory.create(req.body)
 
       .then((dbSubCatData) => {
         return Category.findOneAndUpdate(
@@ -101,6 +114,15 @@ const subCategoryController = {
   //   remove a SubCategory
   deleteSubCategory(req, res) {
     SubCategory.findOneAndDelete({ _id: req.params.subCategoryId })
+
+      // .then((dbSubCatData) => {
+      //   return Category.findOneAndUpdate(
+      //     { name: req.body.parentCategory },
+      //     { $pull: { subCategories: dbSubCatData._id } },
+      //     { new: true },
+      //   )
+      // })
+
       .then((dbSubCatData) => {
         if (!dbSubCatData) {
           return res
@@ -108,7 +130,13 @@ const subCategoryController = {
             .json({ message: "No sub-category with this id!" });
         }
 
-        res.json(dbSubCatData);
+        return Category.findOneAndUpdate(
+              { name: dbSubCatData.parentCategory },
+              { $pull: { subCategories: dbSubCatData._id } },
+              { new: true },
+            );
+
+        // res.json(dbSubCatData);
       })
       .catch((err) => {
         console.log(err);
