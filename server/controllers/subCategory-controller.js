@@ -86,29 +86,46 @@ const subCategoryController = {
   },
 
   // update a SubCategory
-  //   updateSubCategory(req, res) {
+  async updateSubCategory(req, res) {
 
-  //     SubCategory.findOneAndUpdate(
-  //       { _id: req.params.subCategoryId },
-  //       {
-  //         $set: req.body,
-  //       },
-  //       {
-  //         runValidators: true,
-  //         new: true,
-  //       }
-  //     )
-  //       .then((dbSubCatData) => {
-  //         if (!dbSubCatData) {
-  //           return res.status(404).json({ message: "No sub-category with this id!" });
-  //         }
-  //         res.json(dbSubCatData);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //         res.status(500).json(err);
-  //       });
-  //   },
+    let prevParent = await SubCategory.findById(req.params.subCategoryId);
+
+    if (prevParent.parentCategory !== req.body.parentCategory) {
+      await Category.findOneAndUpdate(
+        { name: prevParent.parentCategory },
+        { $pull: { subCategories: req.params.subCategoryId } },
+        { new: true }
+      );
+
+      await Category.findOneAndUpdate(
+        { name: req.body.parentCategory },
+        { $push: { subCategories: req.params.subCategoryId } },
+        { new: true }
+      );
+    }    
+    // console.log(prevParent)
+
+    await SubCategory.findOneAndUpdate(
+      { _id: req.params.subCategoryId },
+      {
+        $set: req.body,
+      },
+      {
+        runValidators: true,
+        new: true,
+      }
+    )
+      .then((dbSubCatData) => {
+        if (!dbSubCatData) {
+          return res.status(404).json({ message: "No sub-category with this id!" });
+        }
+        res.json(dbSubCatData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  },
 
   //   remove a SubCategory
   deleteSubCategory(req, res) {

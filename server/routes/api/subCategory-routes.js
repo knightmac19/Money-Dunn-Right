@@ -3,7 +3,7 @@ const {
   getSubCategories,
   getSingleSubCategory,
   createSubCategory,
-//   updateCategory,
+  updateSubCategory,
   deleteSubCategory,
 } = require('../../controllers/subCategory-controller');
 
@@ -14,7 +14,7 @@ router.route('/').get(getSubCategories).post(createSubCategory);
 router.route('/:subCategoryId')
   .get(getSingleSubCategory)
   .delete(deleteSubCategory)
-//   .put(updateCategory);
+  .put(updateSubCategory);
   
 
 
