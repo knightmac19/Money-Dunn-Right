@@ -1,9 +1,11 @@
 const express = require('express');
-const Transaction = require('../models/TransactionModel');
+// const Transaction = require('../models/TransactionModel');
 const {
   createTransaction,
   getTransactions,
-  getSingleTransaction
+  getSingleTransaction,
+  deleteTransaction,
+  updateTransaction
 } = require('../controllers/transactionController');
 
 const router = express.Router();
@@ -18,17 +20,9 @@ router.get('/:id', getSingleTransaction);
 router.post('/', createTransaction);
 
 // DELETE a single transaction
-router.delete('/:id', (req, res) => {
-  res.json({
-    mssg: 'DELETE a single transaction'
-  })
-});
+router.delete('/:id', deleteTransaction);
 
 // UPDATE a single transaction
-router.patch('/:id', (req, res) => {
-  res.json({
-    mssg: 'UPDATE a single transaction'
-  })
-});
+router.patch('/:id', updateTransaction);
 
 module.exports = router;
