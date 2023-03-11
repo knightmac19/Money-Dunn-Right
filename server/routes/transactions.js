@@ -1,4 +1,5 @@
 const express = require('express');
+const Transaction = require('../models/TransactionModel');
 
 const router = express.Router();
 
@@ -17,10 +18,18 @@ router.get('/:id', (req, res) => {
 });
 
 // POST a new transaction
-router.post('/', (req, res) => {
-  res.json({
-    mssg: 'POST a new transaction'
-  })
+router.post('/', async (req, res) => {
+  const {date, amount, category, description, account} = req.body;
+
+  try {
+    const transaction = await Transaction.create({date, amount, category, description, account});
+    res.status(200).json(transaction);
+  } catch (err) {
+    res.status(400).json({
+      error: err.message
+    })
+  }
+
 });
 
 // DELETE a single transaction
