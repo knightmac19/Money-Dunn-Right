@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+// components
+import TransactionDetails from "../components/TransactionDetails";
+
 
 const Home = () => {
 
@@ -22,7 +25,10 @@ const Home = () => {
     <div className="home">
       <div className="transactions">
         { transactions && transactions.map((transaction) => (
-          <p key={transaction._id}>{transaction.description}</p>
+          <TransactionDetails 
+            key={transaction._id} 
+            transaction={transaction} 
+          />
         ))}
       </div>
     </div>
