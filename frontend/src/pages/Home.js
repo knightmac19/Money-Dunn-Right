@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 // components
 import TransactionDetails from "../components/TransactionDetails";
+import TransactionForm from "../components/TransactionForm";
 
 
 const Home = () => {
@@ -31,6 +32,7 @@ const Home = () => {
           />
         ))}
       </div>
+      <TransactionForm />
     </div>
   )
 }

@@ -2,32 +2,60 @@ import { useState } from 'react';
 import validator from 'validator'
 
 const TransactionForm = () => {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
   const [account, setAccount] = useState('');
   const [date, setDate] = useState('');
+  const [error, setError] = useState(null);
 
-  const [errorMessage, setErrorMessage] = useState('')
+  const [dateError, setDateError] = useState('')
 	
   const validateDate = (value) => {
     
     if (validator.isDate(value)) {
-      setErrorMessage('Valid Date :)');
       setDate(value);
     } else {
-      setErrorMessage('Enter Valid Date!');
+      setDateError('Enter Valid Date!');
     }
   }
 
-  
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const transaction = { amount, category, description, account, date }
+
+    const response = await fetch('/api/transactions', {
+      method: 'POST',
+      body: JSON.stringify(transaction),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const json = await response.json();
+
+    if (!response.ok) {
+      setError(json.error);
+    }
+
+    if (response.ok) {
+      setAmount(0);
+      setCategory('');
+      setDescription('');
+      setAccount('');
+      setDate('');
+      setError(null);
+      console.log('New Transaction Added!');
+    }
+  }
 
   return (
-    <form className='create'>
+    <form className='create' onSubmit={handleSubmit}>
       <h3>Add a Transaction</h3>
 
-      <label>Amount</label>
+      <label>Amount </label>
       <input
         type="number"
         step="0.01"
@@ -37,7 +65,7 @@ const TransactionForm = () => {
         value={amount}
       />
 
-      <label>Category</label>
+      <label>Category </label>
       <input
         type="text"
         maxLength="30"
@@ -47,7 +75,7 @@ const TransactionForm = () => {
         value={category}
       />
 
-      <label>Note</label>
+      <label>Note </label>
       <input
         type="text"
         maxLength="120"
@@ -57,7 +85,7 @@ const TransactionForm = () => {
         value={description}
       />
 
-      <label>Account</label>
+      <label>Account </label>
       <input
         type="text"
         maxLength="30"
@@ -67,7 +95,7 @@ const TransactionForm = () => {
         value={account}
       />
 
-      <label>Date</label>
+      <label>Date </label>
       <input
         type="date"
         placeholder="yyyy-mm-dd"
@@ -80,9 +108,10 @@ const TransactionForm = () => {
           fontWeight: 'bold',
           color: 'red',
         }}
-      >{errorMessage}</span>
+      >{dateError}</span>
 
       <button>Add Transaction</button>
+      {error && <div className='error'>{error}</div>}
     </form>
   )
 }
