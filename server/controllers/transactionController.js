@@ -32,6 +32,29 @@ const getSingleTransaction = async (req, res) => {
 const createTransaction = async (req, res) => {
   const {date, amount, category, description, account} = req.body;
 
+  let emptyFields = [];
+
+  if (!date) {
+    emptyFields.push('date')
+  }
+  if (!amount) {
+    emptyFields.push('amount')
+  }
+  if (!category) {
+    emptyFields.push('category')
+  }
+  if (!description) {
+    emptyFields.push('description')
+  }
+  if (!account) {
+    emptyFields.push('account')
+  }
+
+  if (emptyFields.length > 0) {
+    return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
+  }
+
+
   try {
     const transaction = await Transaction.create({date, amount, category, description, account});
     res.status(200).json(transaction);

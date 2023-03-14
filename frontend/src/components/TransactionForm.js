@@ -10,6 +10,7 @@ const TransactionForm = () => {
   const [account, setAccount] = useState('');
   const [date, setDate] = useState('');
   const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const [dateError, setDateError] = useState('')
 	
@@ -40,6 +41,7 @@ const TransactionForm = () => {
 
     if (!response.ok) {
       setError(json.error);
+      setEmptyFields(json.emptyFields);
     }
 
     if (response.ok) {
@@ -49,6 +51,7 @@ const TransactionForm = () => {
       setAccount('');
       setDate('');
       setError(null);
+      setEmptyFields([]);
       console.log('New Transaction Added!');
       dispatch({type: 'CREATE_TRANSACTION', payload: json})
     }
@@ -66,6 +69,7 @@ const TransactionForm = () => {
         min="0.00"
         onChange={(e) => setAmount(e.target.value)}
         value={amount}
+        className={emptyFields.includes('amount') ? 'error' : ''}
       />
 
       <label>Category </label>
@@ -76,6 +80,7 @@ const TransactionForm = () => {
         placeholder="Enter Category"
         onChange={(e) => setCategory(e.target.value)}
         value={category}
+        className={emptyFields.includes('category') ? 'error' : ''}
       />
 
       <label>Note </label>
@@ -86,6 +91,7 @@ const TransactionForm = () => {
         placeholder="Add Note"
         onChange={(e) => setDescription(e.target.value)}
         value={description}
+        className={emptyFields.includes('description') ? 'error' : ''}
       />
 
       <label>Account </label>
@@ -96,6 +102,7 @@ const TransactionForm = () => {
         placeholder="Enter Account Name"
         onChange={(e) => setAccount(e.target.value)}
         value={account}
+        className={emptyFields.includes('account') ? 'error' : ''}
       />
 
       <label>Date </label>
@@ -104,6 +111,7 @@ const TransactionForm = () => {
         placeholder="yyyy-mm-dd"
         onChange={(e) => validateDate(e.target.value)}
         value={date}
+        className={emptyFields.includes('date') ? 'error' : ''}
       />
       <br />
       <span 
