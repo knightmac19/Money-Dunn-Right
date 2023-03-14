@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const transactionSchema = new Schema({
+const expenseSchema = new Schema({
   date: {
     type: Date,
     required: true
@@ -26,7 +26,7 @@ const transactionSchema = new Schema({
 
 }, { timestamps: true });
 
-const Transaction = mongoose.model('Transaction', transactionSchema);
+const Expense = mongoose.model('Expense', expenseSchema);
 
-module.exports = Transaction;
+module.exports = Expense;
 

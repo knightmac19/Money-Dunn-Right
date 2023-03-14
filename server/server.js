@@ -4,7 +4,7 @@ const PORT = process.env.PORT;
 
 const express = require('express');
 const mongoose = require('mongoose');
-const transactionRoutes = require('./routes/transactions');
+const expensesRoutes = require('./routes/expenses');
 
 // express app
 const app = express();
@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.use('/api/transactions', transactionRoutes);
+app.use('/api/expenses', expensesRoutes);
 
 // connect to db
 mongoose.connect(process.env.MONGO_URI)
