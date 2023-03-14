@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useTransactionsContext } from "../hooks/useTransactionsContext";
 
 // components
 import TransactionDetails from "../components/TransactionDetails";
@@ -7,7 +8,7 @@ import TransactionForm from "../components/TransactionForm";
 
 const Home = () => {
 
-  const [transactions, setTransactions] = useState(null);
+  const {transactions, dispatch} = useTransactionsContext();
 
   useEffect(() => {
     const fetchTransactions = async () => {
@@ -15,12 +16,12 @@ const Home = () => {
       const json = await res.json();
 
       if (res.ok){
-        setTransactions(json);
+        dispatch({type: 'SET_TRANSACTIONS', payload: json});
       }
     }
 
     fetchTransactions();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="home">

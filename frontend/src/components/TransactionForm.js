@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import validator from 'validator'
+import { useTransactionsContext } from "../hooks/useTransactionsContext";
 
 const TransactionForm = () => {
+  const { dispatch } = useTransactionsContext();
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
@@ -48,6 +50,7 @@ const TransactionForm = () => {
       setDate('');
       setError(null);
       console.log('New Transaction Added!');
+      dispatch({type: 'CREATE_TRANSACTION', payload: json})
     }
   }
 

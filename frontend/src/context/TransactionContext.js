@@ -23,7 +23,7 @@ export const TransactionsContextProvider = ({ children }) => {
   });
 
   return (
-    <TransactionsContext.Provider value={{state, dispatch}}>
+    <TransactionsContext.Provider value={{...state, dispatch}}>
       { children }
 
     </TransactionsContext.Provider>
