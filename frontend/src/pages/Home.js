@@ -8,25 +8,29 @@ import TransactionForm from "../components/TransactionForm";
 
 const Home = () => {
 
-  const {transactions, dispatch} = useTransactionsContext();
+  const {expenses, dispatch} = useTransactionsContext();
+  
 
   useEffect(() => {
-    const fetchTransactions = async () => {
-      const res = await fetch('/api/transactions');
+    // console.log('is useEffect firing?')
+    const fetchExpenses = async () => {
+      // console.log('is fetchExpenses firing?')
+      const res = await fetch('/api/expenses');
       const json = await res.json();
+      // console.log(json)
 
       if (res.ok){
         dispatch({type: 'SET_TRANSACTIONS', payload: json});
       }
     }
 
-    fetchTransactions();
+    fetchExpenses();
   }, [dispatch]);
 
   return (
     <div className="home">
       <div className="transactions">
-        { transactions && transactions.map((transaction) => (
+        { expenses && expenses.map((transaction) => (
           <TransactionDetails 
             key={transaction._id} 
             transaction={transaction} 

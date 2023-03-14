@@ -1,9 +1,5 @@
 import { useTransactionsContext } from "../hooks/useTransactionsContext";
 
-// date fns
-// import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-// import format from 'date-fns/format';
-
 const TransactionDetails = ({ transaction }) => {
   const { dispatch } = useTransactionsContext();
 
@@ -30,13 +26,14 @@ const TransactionDetails = ({ transaction }) => {
   
 
   const handleClick = async () => {
-    const res = await fetch('/api/transactions/' + transaction._id, {
+    // console.log(transaction)
+    const res = await fetch('/api/expenses/' + transaction._id, {
       method: 'DELETE'
     });
     const json = await res.json();
 
     if (res.ok) {
-      dispatch({type: 'DELETE_TRANSACTION', payload: json})
+      dispatch({type: 'DELETE_EXPENSE', payload: json})
     }
   }
 

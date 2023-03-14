@@ -29,7 +29,7 @@ const ExpenseForm = () => {
 
     const transaction = { amount, category, description, account, date }
 
-    const response = await fetch('/api/transactions', {
+    const response = await fetch('/api/expenses', {
       method: 'POST',
       body: JSON.stringify(transaction),
       headers: {
@@ -45,7 +45,7 @@ const ExpenseForm = () => {
     }
 
     if (response.ok) {
-      setAmount(0);
+      setAmount('');
       setCategory('');
       setDescription('');
       setAccount('');
@@ -53,7 +53,7 @@ const ExpenseForm = () => {
       setError(null);
       setEmptyFields([]);
       console.log('New Transaction Added!');
-      dispatch({type: 'CREATE_TRANSACTION', payload: json})
+      dispatch({type: 'CREATE_EXPENSE', payload: json})
     }
   }
 
