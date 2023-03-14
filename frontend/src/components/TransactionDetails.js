@@ -22,7 +22,11 @@ const TransactionDetails = ({ transaction }) => {
       <p><strong>Note: </strong>{transaction.description}</p>
       <p><strong>Account: </strong>{transaction.account}</p>
       <p>{transaction.date}</p>
-      <span onClick={handleClick}>DEL</span>
+      <span
+       onClick={handleClick}
+       className='material-symbols-outlined'
+      >delete
+      </span>
     </div>
   );
     
