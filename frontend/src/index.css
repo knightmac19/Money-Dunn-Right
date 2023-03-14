@@ -75,10 +75,11 @@ header a {
   top: 20px;
   right: 20px;
   cursor: pointer;
-  background: #f1f1f1;
+  background: #e7195a;
   padding: 6px;
   border-radius: 50%;
-  color: #333;
+  font-weight: 600;
+  color: var(--cards-background);
 }
 
 /* new transaction form */
