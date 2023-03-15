@@ -10,13 +10,16 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <div className="pages">
-          <Routes>
-            <Route
-              path="/"
-              element={<Home />}
-            />
-          </Routes>
+          <div className='content-wrap'>
+            <Routes>
+              <Route
+                path="/"
+                element={<Home />}
+              />
+            </Routes>
           
+          </div>
+          <footer className="footer">&copy 2023 Patrick Dunn</footer>
         </div>
       </BrowserRouter>
     </div>

@@ -2,6 +2,7 @@ import ExpenseForm from './ExpenseForm';
 
 const TransactionForm = () => {
   
+
   return (
     <div>
       <ExpenseForm />

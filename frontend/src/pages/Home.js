@@ -29,6 +29,7 @@ const Home = () => {
 
   return (
     <div className="home">
+      <TransactionForm />
       <div className="transactions">
         { expenses && expenses.map((transaction) => (
           <TransactionDetails 
@@ -37,7 +38,7 @@ const Home = () => {
           />
         ))}
       </div>
-      <TransactionForm />
+      
     </div>
   )
 }

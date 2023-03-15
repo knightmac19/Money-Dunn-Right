@@ -20,6 +20,13 @@
   --error: #e7195a;
 
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  /* box-sizing: border-box; */
+  /* background-color: #777; */
+}
 body {
   background: var(--body-background);
   margin: 0;
@@ -41,34 +48,69 @@ header a {
   text-decoration: none;
 }
 .pages {
-  max-width: 1400px;
-  padding: 20px;
-  margin: 0 auto;
+  /* max-width: 1400px; */
+  margin: 0;
+  padding: 0;
+  position: relative;
+  min-height: 91vh;
+  
+}
+
+.content-wrap {
+  padding-bottom: 2.5rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  background-color: var(--header-background);
+  color: var(--dark-text);
+  font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
 }
 
 /* homepage */
 .home {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 100px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  /* align-items: start; */
+  margin: 20px;
 }
-.transaction-details {
+.transactions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.transaction-details { 
+  max-width: 600px;
   background: var(--cards-background);
   border-radius: 4px;
-  margin: 20px auto;
-  padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
+form {
+  
+  margin: 0px auto 20px auto;
+  max-width: 400px;
+  color: var(--cards-background);
+}
 .transaction-details h4 {
-  margin: 0 0 10px 0;
+  margin: 10px;
   font-size: 1.2em;
   color: #e7195a;
+  
 }
 .transaction-details p {
   margin: 0;
   font-size: 0.9em;
   color: var(--dark-text);
+  margin: 0 10px;
 }
 .transaction-details span {
   position: absolute;
@@ -83,9 +125,7 @@ header a {
 }
 
 /* new transaction form */
-form {
-  color: var(--cards-background);
-}
+
 
 label, input {
   display: block;
@@ -118,4 +158,56 @@ div.error {
 }
 input.error {
   border: 1px solid var(--error)
+}
+
+@media (min-width: 600px) {
+  .home {
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: start;
+    
+  }
+  .transactions {
+    min-width: 280px;
+  }
+
+  form {
+    
+    margin: 0;
+    min-width: 200px; 
+  }
+}
+
+@media (min-width: 768px) {
+  .home {
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: start;
+    
+  }
+  .transactions {
+    min-width: 400px;
+  }
+
+  form {
+    margin: 0;
+    min-width: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+  .home {
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: start;
+  }
+  .transactions {
+    min-width: 600px;
+  }
+
+  form {
+    margin: 0;
+    min-width: 300px; 
+    
+  }
 }
