@@ -1,7 +1,7 @@
 const express = require('express');
 const {
   createIncome,
-  getIncome,
+  getIncomes,
   getSingleIncome,
   deleteIncome,
   updateIncome
@@ -10,7 +10,7 @@ const {
 const router = express.Router();
 
 // GET all Income
-router.get('/', getIncome);
+router.get('/', getIncomes);
 
 // GET a single Income
 router.get('/:id', getSingleIncome);
