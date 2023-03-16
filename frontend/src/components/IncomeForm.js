@@ -57,7 +57,7 @@ const IncomeForm = () => {
 
   return (
     <form className='create' onSubmit={handleSubmit}>
-      <h3>Add a Transaction</h3>
+      
 
       <label>Amount </label>
       <input
@@ -97,7 +97,7 @@ const IncomeForm = () => {
         }}
       >{dateError}</span>
 
-      <button>Add Transaction</button>
+      <button>Add Income</button>
       {error && <div className='error'>{error}</div>}
     </form>
   )
