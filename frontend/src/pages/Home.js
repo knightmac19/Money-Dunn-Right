@@ -9,7 +9,7 @@ import TransactionForm from "../components/TransactionForm";
 
 const Home = () => {
 
-  const {expenses, dispatch} = useTransactionsContext();
+  const {transactions, dispatch} = useTransactionsContext();
 
   // sort by date
   const byDate = (a, b) => {
@@ -19,8 +19,8 @@ const Home = () => {
 
   useEffect(() => {
     // console.log('is useEffect firing?')
-    const fetchExpenses = async () => {
-      // console.log('is fetchExpenses firing?')
+    const fetchTransactions = async () => {
+      // console.log('is fetchTransactions firing?')
       const expensesResponse = await fetch('/api/expenses');
       const expensesJson = await expensesResponse.json();
 
@@ -36,14 +36,14 @@ const Home = () => {
       }
     }
 
-    fetchExpenses();
+    fetchTransactions();
   }, [dispatch]);
 
   return (
     <div className="home">
       <TransactionForm />
       <div className="transactions">
-        { expenses && expenses.map((transaction) => (
+        { transactions && transactions.map((transaction) => (
           transaction.source ? 
           <IncomeDetails key={transaction._id} transaction={transaction} /> :
           <TransactionDetails key={transaction._id} transaction={transaction} />

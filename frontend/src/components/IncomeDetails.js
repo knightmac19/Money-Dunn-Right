@@ -1,7 +1,7 @@
-// import { useTransactionsContext } from "../hooks/useTransactionsContext";
+import { useTransactionsContext } from "../hooks/useTransactionsContext";
 
 const IncomeDetails = ({ transaction }) => {
-  // const { dispatch } = useTransactionsContext();
+  const { dispatch } = useTransactionsContext();
 
   const generatedDate = new Date(transaction.date).toISOString();
   
@@ -37,16 +37,14 @@ const IncomeDetails = ({ transaction }) => {
   
 
   const handleClick = async () => {
-    console.log('trying to delete income!');
-    
-    // const res = await fetch('/api/expenses/' + transaction._id, {
-    //   method: 'DELETE'
-    // });
-    // const json = await res.json();
+    const res = await fetch('/api/income/' + transaction._id, {
+      method: 'DELETE'
+    });
+    const json = await res.json();
 
-    // if (res.ok) {
-    //   dispatch({type: 'DELETE_EXPENSE', payload: json})
-    // }
+    if (res.ok) {
+      dispatch({type: 'DELETE_TRANSACTION', payload: json})
+    }
   }
 
   return (

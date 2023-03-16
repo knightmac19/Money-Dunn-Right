@@ -6,7 +6,21 @@ const TransactionDetails = ({ transaction }) => {
   const generatedDate = new Date(transaction.date).toISOString();
   
 
-  const months = ['empty', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  const months = [
+    'empty', 
+    'January', 
+    'February', 
+    'March', 
+    'April', 
+    'May', 
+    'June', 
+    'July', 
+    'August', 
+    'September', 
+    'October', 
+    'November', 
+    'December'
+  ]
   const formatDate = (date) => {
     let year = date.slice(0,4);
     let month = date.slice(5,7);
@@ -20,9 +34,6 @@ const TransactionDetails = ({ transaction }) => {
 
     return `${month} ${day} ${year}`;
   }
-
-
-  // console.log(formatDate(generatedDate))
   
 
   const handleClick = async () => {
@@ -33,7 +44,7 @@ const TransactionDetails = ({ transaction }) => {
     const json = await res.json();
 
     if (res.ok) {
-      dispatch({type: 'DELETE_EXPENSE', payload: json})
+      dispatch({type: 'DELETE_TRANSACTION', payload: json})
     }
   }
 
@@ -43,8 +54,6 @@ const TransactionDetails = ({ transaction }) => {
       <p><strong>Category: </strong>{transaction.category}</p>
       <p><strong>Note: </strong>{transaction.description}</p>
       <p><strong>Account: </strong>{transaction.account}</p>
-      {/* <p>{formatDistanceToNow(new Date(transaction.date), {addSuffix: true})}</p> */}
-      {/* <p>{generatedDate}</p> */}
       <p>{formatDate(generatedDate)}</p>
       <span
        onClick={handleClick}

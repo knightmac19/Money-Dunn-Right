@@ -7,15 +7,15 @@ export const transactionsReducer = (state, action) => {
     // this is currently being used for a combined view of Income + Expense entries
     case 'SET_TRANSACTIONS':
       return {
-        expenses: action.payload
+        transactions: action.payload
       }
-    case 'CREATE_EXPENSE':
+    case 'CREATE_TRANSACTION':
       return {
-        expenses: [action.payload, ...state.expenses]
+        transactions: [action.payload, ...state.transactions]
       }
-    case 'DELETE_EXPENSE':
+    case 'DELETE_TRANSACTION':
       return {
-        expenses: state.expenses.filter((t) => t._id !== action.payload._id)
+        transactions: state.transactions.filter((t) => t._id !== action.payload._id)
       }
     default:
       return state
@@ -24,7 +24,7 @@ export const transactionsReducer = (state, action) => {
 
 export const TransactionsContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(transactionsReducer, {
-    expenses: null
+    transactions: null
   });
 
   return (
