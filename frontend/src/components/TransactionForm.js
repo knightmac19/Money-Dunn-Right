@@ -1,11 +1,13 @@
-import ExpenseForm from './ExpenseForm';
+// import ExpenseForm from './ExpenseForm';
+import IncomeForm from './IncomeForm';
 
 const TransactionForm = () => {
   
 
   return (
     <div>
-      <ExpenseForm />
+      {/* <ExpenseForm /> */}
+      <IncomeForm />
     </div>
   )
 }
