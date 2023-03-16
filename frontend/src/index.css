@@ -103,8 +103,13 @@ form {
 .transaction-details h4 {
   margin: 10px;
   font-size: 1.2em;
+}
+.expense-details-amount {
   color: #e7195a;
-  
+}
+
+.income-details-amount {
+  color: var(--primary);
 }
 .transaction-details p {
   margin: 0;
