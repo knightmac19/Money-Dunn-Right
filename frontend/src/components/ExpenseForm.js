@@ -121,7 +121,7 @@ const ExpenseForm = () => {
         }}
       >{dateError}</span>
 
-      <button>Add Expense</button>
+      <button className='add-transaction-btn'>Add Expense</button>
       {error && <div className='error'>{error}</div>}
     </form>
   )

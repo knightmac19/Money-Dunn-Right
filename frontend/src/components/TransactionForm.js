@@ -42,18 +42,18 @@ const TransactionForm = () => {
 
   return (
     <div>
-      <h3 className='form-header'>Add a Transaction</h3>
+      <h3 className='form-header'>Add A Transaction</h3>
       <div className='form-buttons-container'>
         <button
           name='expense-form-btn'
           id={expenseFocused}
           onClick={handleClick}
-        >Expense Form</button>
+        >Expense</button>
         <button
           name='income-form-btn'
           id={incomeFocused}
           onClick={handleClick}
-        >Income Form</button>
+        >Income</button>
         <button
           name='hide-form-btn'
           id={hideFocused}

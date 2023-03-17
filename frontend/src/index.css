@@ -127,6 +127,8 @@ form {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
+
+
 .form-buttons-container button:hover {
   background-color: var(--cards-background);
   color: var(--gray-btn);
@@ -216,14 +218,28 @@ input {
   border-radius: 4px;
   box-sizing: border-box;
 }
-form button {
-  background: var(--primary);
-  border: 0;
-  color: #fff;
-  padding: 10px;
-  font-family: "Poppins";
-  border-radius: 4px;
+.add-transaction-btn {
+  position: relative;
+  background-color: var(--primary);
+  color: var(--cards-background);
+  border: none;
+  font-size: 16px;
+  padding: 4px 8px 4px 8px;
   cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.add-transaction-btn:hover {
+  color: var(--gray-btn);
+}
+
+.add-transaction-btn:active {
+  background-color: var(--cards-background);
+  color: var(--primary);
+  top: 4px;
+  left: 2px;
+  box-shadow: none;
 }
 div.error {
   padding: 10px;

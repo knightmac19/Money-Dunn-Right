@@ -97,7 +97,7 @@ const IncomeForm = () => {
         }}
       >{dateError}</span>
 
-      <button>Add Income</button>
+      <button className='add-transaction-btn'>Add Income</button>
       {error && <div className='error'>{error}</div>}
     </form>
   )
