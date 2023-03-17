@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import CopyrightSharpIcon from '@mui/icons-material/CopyrightSharp';
 
 // pages and components
 import Home from './pages/Home';
@@ -19,7 +20,10 @@ function App() {
             </Routes>
           
           </div>
-          <footer className="footer">&copy 2023 Patrick Dunn</footer>
+          <footer className="footer"> 
+            <span className='material-symbols-outlined'>copyright</span> 
+            
+            2023 Patrick Dunn</footer>
         </div>
       </BrowserRouter>
     </div>
