@@ -53,7 +53,7 @@ const ExpenseForm = () => {
       setError(null);
       setEmptyFields([]);
       console.log('New Transaction Added!');
-      dispatch({type: 'CREATE_EXPENSE', payload: json})
+      dispatch({type: 'CREATE_TRANSACTION', payload: json})
     }
   }
 
