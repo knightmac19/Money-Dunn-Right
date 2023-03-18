@@ -232,6 +232,7 @@ input {
   cursor: pointer;
   border-radius: 5px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+  margin-bottom: 10px;
 }
 
 .add-transaction-btn:hover {
@@ -309,10 +310,29 @@ input.error {
   }
 }
 
-/* .login, .signup {
+.nav-container {
   display: flex;
-  flex-direction: column;
-  
-} */
+  gap: 20px;
+}
 
+.nav-container a {
+  color: var(--cards-background);
+  font-size: 22px;
+  font-weight: bold;
+}
 
+a:hover {
+  color: var(--gray-btn);
+  text-decoration: underline;
+}
+
+.login, .signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 80px auto;
+}
+
+a {
+  color:var(--cards-background);
+}
