@@ -74,6 +74,9 @@ header a {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  
   background-color: var(--header-background);
   color: var(--dark-text);
   font-weight: bold;
@@ -101,9 +104,10 @@ header a {
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
 form {
-  
   margin: 0px auto 20px auto;
   max-width: 400px;
+}
+.create {
   color: var(--cards-background);
 }
 .form-header {
@@ -236,7 +240,7 @@ input {
 }
 
 .add-transaction-btn:hover {
-  color: var(--gray-btn);
+  color: var(--dark-text);
 }
 
 .add-transaction-btn:active {
@@ -258,57 +262,7 @@ input.error {
   border: 1px solid var(--error)
 }
 
-@media (min-width: 600px) {
-  .home {
-    flex-direction: row-reverse;
-    justify-content: space-around;
-    align-items: start;
-    
-  }
-  .transactions {
-    min-width: 280px;
-  }
 
-  form {
-    
-    margin: 0;
-    min-width: 200px; 
-  }
-}
-
-@media (min-width: 768px) {
-  .home {
-    flex-direction: row-reverse;
-    justify-content: space-around;
-    align-items: start;
-    
-  }
-  .transactions {
-    min-width: 400px;
-  }
-
-  form {
-    margin: 0;
-    min-width: 300px;
-  }
-}
-
-@media (min-width: 992px) {
-  .home {
-    flex-direction: row-reverse;
-    justify-content: space-around;
-    align-items: start;
-  }
-  .transactions {
-    min-width: 600px;
-  }
-
-  form {
-    margin: 0;
-    min-width: 300px; 
-    
-  }
-}
 
 .nav-container {
   display: flex;
@@ -330,9 +284,99 @@ a:hover {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 80px auto;
+  margin-top: 40px;
+  margin-bottom: 40px; 
+  margin-right: auto;
+  margin-left: auto;
+  align-items: center;
+  max-width: 400px;
+  background-color: var(--cards-background);
+  color: black;
+  padding: 20px 10px;
+  border-radius: 5px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+}
 a {
-  color:var(--cards-background);
+  color:var(--dark-text);
+}
+
+.nav-header-large {
+  display: none;
+}
+.nav-header-small {
+  display: block;
+}
+
+
+@media (min-width: 600px) {
+  .home {
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: start;
+    
+  }
+  .transactions {
+    min-width: 280px;
+  }
+
+  form {
+    
+    margin: 0;
+    min-width: 200px; 
+  }
+  .nav-header-large {
+    display: block;
+  }
+  .nav-header-small {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .home {
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: start;
+    
+  }
+  .transactions {
+    min-width: 400px;
+  }
+
+  form {
+    margin: 0;
+    min-width: 300px;
+  }
+  .nav-header-large {
+    display: block;
+  }
+  .nav-header-small {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .home {
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: start;
+  }
+  .transactions {
+    min-width: 600px;
+  }
+
+  form {
+    margin: 0;
+    min-width: 300px; 
+  }
+  .nav-header-large {
+    display: block;
+  }
+  .nav-header-small {
+    display: none;
+  }
 }
