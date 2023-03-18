@@ -10,32 +10,26 @@ import Navbar from './components/Navbar';
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <div className="pages">
-          <div className='content-wrap'>
-            <Routes>
-              <Route
-                path="/"
-                element={<Home />}
-              />
-              <Route
-                path="/signup"
-                element={<Signup />}
-              />
-              <Route
-                path="/login"
-                element={<Login />}
-              />
-            </Routes>
-          
+        <BrowserRouter>
+          <Navbar />
+          <div className="pages">
+              <Routes>
+                <Route
+                  path="/"
+                  element={<Home />}
+                />
+                  <Route
+                    path="/signup"
+                    element={<Signup />}
+                  />
+                  <Route
+                    path="/login"
+                    element={<Login />}
+                  />
+              </Routes>
           </div>
-          <footer className="footer"> 
-            <span className='material-symbols-outlined'>copyright</span> 
-            
-            2023 Patrick Dunn</footer>
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      
     </div>
   );
 }
