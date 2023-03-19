@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useTransactionsContext } from "../hooks/useTransactionsContext";
+import { useAuthContext } from '../hooks/useAuthContext'
 
 // components
 import TransactionDetails from "../components/TransactionDetails";
@@ -8,8 +9,8 @@ import TransactionForm from "../components/TransactionForm";
 
 
 const Home = () => {
-
   const {transactions, dispatch} = useTransactionsContext();
+  const {user} = useAuthContext()
 
   // sort by date
   const byDate = (a, b) => {
@@ -21,10 +22,18 @@ const Home = () => {
     // console.log('is useEffect firing?')
     const fetchTransactions = async () => {
       // console.log('is fetchTransactions firing?')
-      const expensesResponse = await fetch('/api/expenses');
+      const expensesResponse = await fetch('/api/expenses', {
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
+      });
       const expensesJson = await expensesResponse.json();
 
-      const incomeResponse = await fetch('/api/income');
+      const incomeResponse = await fetch('/api/income', {
+        headers: {
+          'Authorization': `Bearer ${user.token}`
+        }
+      });
       const incomeJson = await incomeResponse.json();
       
       const fullJson = await expensesJson.concat(incomeJson);
@@ -36,8 +45,11 @@ const Home = () => {
       }
     }
 
-    fetchTransactions();
-  }, [dispatch]);
+
+    if (user) {
+      fetchTransactions();
+    }
+  }, [dispatch, user]);
 
   return (
     <div className="home">

@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import validator from 'validator'
 import { useTransactionsContext } from "../hooks/useTransactionsContext";
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const ExpenseForm = () => {
   const { dispatch } = useTransactionsContext();
+  const { user } = useAuthContext();
+
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
@@ -27,13 +30,19 @@ const ExpenseForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!user) {
+      setError('You must be logged in')
+      return
+    }
+
     const transaction = { amount, category, description, account, date }
 
     const response = await fetch('/api/expenses', {
       method: 'POST',
       body: JSON.stringify(transaction),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
       }
     });
 

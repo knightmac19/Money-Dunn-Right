@@ -1,7 +1,9 @@
 import { useTransactionsContext } from "../hooks/useTransactionsContext";
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const IncomeDetails = ({ transaction }) => {
   const { dispatch } = useTransactionsContext();
+  const { user } = useAuthContext();
 
   const generatedDate = new Date(transaction.date).toISOString();
   
@@ -37,8 +39,15 @@ const IncomeDetails = ({ transaction }) => {
   
 
   const handleClick = async () => {
+    if (!user) {
+      return
+    }
+
     const res = await fetch('/api/income/' + transaction._id, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${user.token}`
+      }
     });
     const json = await res.json();
 
