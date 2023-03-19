@@ -6,8 +6,12 @@ const {
   deleteIncome,
   updateIncome
 } = require('../controllers/incomeController');
+const Auth = require('../middleware/Auth')
 
 const router = express.Router();
+
+// require auth middleware for all routes
+router.use(Auth)
 
 // GET all Income
 router.get('/', getIncomes);
