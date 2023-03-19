@@ -1,0 +1,22 @@
+{
+  "name": "money-dunn-right",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd server && npm i && cd ../frontend && npm i",
+    "start": "cd server && npm start && cd ../frontend && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/knightmac19/Money-Dunn-Right.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/knightmac19/Money-Dunn-Right/issues"
+  },
+  "homepage": "https://github.com/knightmac19/Money-Dunn-Right#readme"
+}
