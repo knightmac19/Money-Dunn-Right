@@ -339,7 +339,7 @@ nav button:active {
 .user-email-container {
   display: flex;
   flex-direction: column;
-  align-items: end;
+  align-items: flex-end;
 }
 
 
