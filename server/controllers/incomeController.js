@@ -4,7 +4,9 @@ const mongoose = require('mongoose');
 
 // get all income entries
 const getIncomes = async (req, res) => {
-  const incomes = await Income.find({}).sort({date: -1});
+  const user_id = req.user._id
+
+  const incomes = await Income.find({ user_id }).sort({date: -1});
 
   res.status(200).json(incomes);
 }
@@ -50,7 +52,8 @@ const createIncome = async (req, res) => {
 
 
   try {
-    const income = await Income.create({date, amount, source});
+    const user_id = req.user._id
+    const income = await Income.create({date, amount, source, user_id});
     res.status(200).json(income);
   } catch (err) {
     res.status(400).json({

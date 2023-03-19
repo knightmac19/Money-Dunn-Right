@@ -4,7 +4,9 @@ const mongoose = require('mongoose');
 
 // get all expenses
 const getExpenses = async (req, res) => {
-  const expenses = await Expense.find({}).sort({date: -1});
+  const user_id = req.user._id
+
+  const expenses = await Expense.find({ user_id }).sort({date: -1});
 
   res.status(200).json(expenses);
 }
@@ -56,7 +58,8 @@ const createExpense = async (req, res) => {
 
 
   try {
-    const expense = await Expense.create({date, amount, category, description, account});
+    const user_id = req.user._id
+    const expense = await Expense.create({date, amount, category, description, account, user_id});
     res.status(200).json(expense);
   } catch (err) {
     res.status(400).json({
