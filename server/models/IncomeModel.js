@@ -21,4 +21,3 @@ const incomeSchema = new Schema({
 const Income = mongoose.model('Income', incomeSchema);
 
 module.exports = Income;
-
