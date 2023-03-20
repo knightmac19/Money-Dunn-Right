@@ -7,7 +7,6 @@ export const useSignup = () => {
   const { dispatch } = useAuthContext()
 
   const signup = async (email, password) => {
-    console.log('inside signup hook', email, password)
 
     setIsLoading(true)
     setError(null)
@@ -17,10 +16,7 @@ export const useSignup = () => {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({email, password})
     })
-    console.log(response.body)
     const json = await response.json()
-    const text = await response.text()
-    console.log(text)
 
     if (!response.ok) {
       setIsLoading(false)
