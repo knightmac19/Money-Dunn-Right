@@ -1,5 +1,5 @@
 {
-  "proxy": "https://money-dunn-right.netlify.app/",
+  "proxy": "https://money-dunn-right.onrender.com",
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
