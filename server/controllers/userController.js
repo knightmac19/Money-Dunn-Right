@@ -49,20 +49,20 @@ const signupUser = async (req, res) => {
 }
 
 // delete user
-const deleteUser = async (req, res) => {
-  const { id } = req.params;
+// const deleteUser = async (req, res) => {
+//   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({error: 'No such user'});
-  }
+//   if (!mongoose.Types.ObjectId.isValid(id)) {
+//     return res.status(404).json({error: 'No such user'});
+//   }
 
-  const user = await User.findOneAndDelete({_id: id});
+//   const user = await User.findOneAndDelete({_id: id});
 
-  if (!user) {
-    return res.status(404).json({error: 'No such user'});
-  }
+//   if (!user) {
+//     return res.status(404).json({error: 'No such user'});
+//   }
 
-  res.status(200).json(user);
-}
+//   res.status(200).json(user);
+// }
 
-module.exports = { loginUser, signupUser, getAllUsers, deleteUser }
+module.exports = { loginUser, signupUser, getAllUsers }

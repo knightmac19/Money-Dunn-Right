@@ -4,8 +4,7 @@ const express = require('express');
 const { 
   signupUser, 
   loginUser, 
-  getAllUsers, 
-  deleteUser 
+  getAllUsers 
 } = require('../controllers/userController');
 
 const router = express.Router();
@@ -20,6 +19,6 @@ router.post('/signup', signupUser);
 router.get('/', getAllUsers);
 
 // DELETE a single Income
-router.delete('/:id', deleteUser);
+// router.delete('/:id', deleteUser);
 
 module.exports = router;
