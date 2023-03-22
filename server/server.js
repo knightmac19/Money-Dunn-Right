@@ -8,8 +8,11 @@ const expensesRoutes = require('./routes/expenses');
 const incomeRoutes = require('./routes/income');
 const userRoutes = require('./routes/user');
 
+const cors = require('cors');
+
 // express app
 const app = express();
+app.use(cors());
 
 // middleware
 app.use(express.json());
