@@ -44,7 +44,7 @@ const TransactionDetails = ({ transaction }) => {
     }
 
     // console.log(transaction)
-    const res = await fetch('https://money-dunn-right.onrender.com/api/expenses/' + transaction._id, {
+    const res = await fetch(`${process.env.API}/api/expenses/` + transaction._id, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${user.token}`
