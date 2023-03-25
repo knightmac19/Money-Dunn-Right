@@ -22,14 +22,14 @@ const Home = () => {
     // console.log('is useEffect firing?')
     const fetchTransactions = async () => {
       // console.log('is fetchTransactions firing?')
-      const expensesResponse = await fetch('https://localhost:4000/api/expenses', {
+      const expensesResponse = await fetch('https://money-dunn-right.onrender.com/api/expenses/', {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }
       });
       const expensesJson = await expensesResponse.json();
 
-      const incomeResponse = await fetch('https://localhost:4000/api/income', {
+      const incomeResponse = await fetch('/api/income/', {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }

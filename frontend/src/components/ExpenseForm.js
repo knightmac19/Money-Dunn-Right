@@ -37,7 +37,7 @@ const ExpenseForm = () => {
 
     const transaction = { amount, category, description, account, date }
 
-    const response = await fetch('https://localhost:4000/api/expenses/', {
+    const response = await fetch('/api/expenses/', {
       method: 'POST',
       body: JSON.stringify(transaction),
       headers: {

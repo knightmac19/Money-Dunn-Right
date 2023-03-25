@@ -36,7 +36,7 @@ const IncomeForm = () => {
 
     const income = { amount, source, date }
 
-    const response = await fetch('https://localhost:4000/api/income/', {
+    const response = await fetch('/api/income/', {
       method: 'POST',
       body: JSON.stringify(income),
       headers: {
