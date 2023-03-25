@@ -8,6 +8,7 @@ import IncomeDetails from "../components/IncomeDetails";
 import TransactionForm from "../components/TransactionForm";
 
 
+
 const Home = () => {
   const {transactions, dispatch} = useTransactionsContext();
   const {user} = useAuthContext()
@@ -53,6 +54,7 @@ const Home = () => {
 
   return (
     <div className="home">
+      
       <TransactionForm />
       <div className="transactions">
         { transactions && transactions.map((transaction) => (

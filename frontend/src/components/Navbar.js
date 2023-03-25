@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
+import LangToggle from "./LangToggle";
 
 const Navbar = () => {
   const { logout } = useLogout();
@@ -13,10 +14,13 @@ const Navbar = () => {
   return (
     <header>
       <div className="container">
-        <Link to="/">
-          <h1 className="nav-header-large">Money Dunn Right</h1>
-          <h1 className="nav-header-small">MDR</h1>
-        </Link>
+        <div className="nav-title-container">
+          <Link to="/">
+            <h1 className="nav-header-large">Money Dunn Right</h1>
+            <h1 className="nav-header-small">MDR</h1>
+          </Link>
+          <LangToggle />
+        </div>
         <nav>
           {user && (
             <div className="user-email-container">

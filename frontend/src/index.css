@@ -82,6 +82,47 @@ header a {
   font-weight: bold;
 }
 
+/* start language toggle */
+.lang-container {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+}
+.lang-container button {
+  position: relative;
+  background-color: var(--gray-btn);
+  color: var(--cards-background);
+  border: none;
+  font-size: 16px;
+  padding: 4px 8px 4px 8px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+}
+.lang-container button:hover {
+  background-color: var(--cards-background);
+  color: var(--gray-btn);
+}
+
+#english-btn-focused {
+  background-color: var(--cards-background);
+  color: var(--primary);
+  top: 4px;
+  left: 2px;
+  box-shadow: none;
+}
+
+#spanish-btn-focused {
+  background-color: var(--cards-background);
+  color: var(--primary);
+  top: 4px;
+  left: 2px;
+  box-shadow: none;
+}
+/* end language toggle */
+
 /* homepage */
 .home {
   display: flex;
@@ -90,7 +131,11 @@ header a {
   /* align-items: start; */
   margin: 20px;
   gap: 10px;
+  
 }
+
+
+
 .transactions {
   display: flex;
   flex-direction: column;
@@ -343,6 +388,8 @@ nav button:active {
 }
 
 
+
+
 @media (min-width: 600px) {
   .home {
     flex-direction: row-reverse;
@@ -365,6 +412,8 @@ nav button:active {
   .nav-header-small {
     display: none;
   }
+
+  
 }
 
 @media (min-width: 768px) {
@@ -388,6 +437,7 @@ nav button:active {
   .nav-header-small {
     display: none;
   }
+  
 }
 
 @media (min-width: 992px) {
@@ -410,4 +460,5 @@ nav button:active {
   .nav-header-small {
     display: none;
   }
+  
 }
