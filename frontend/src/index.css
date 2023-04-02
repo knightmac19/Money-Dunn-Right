@@ -87,7 +87,7 @@ header a {
   margin-bottom: 10px;
   display: flex;
   justify-content: flex-start;
-  gap: 5px;
+  gap: 10px;
 }
 .lang-container button {
   position: relative;
