@@ -25,14 +25,14 @@ const TransactionDetails = ({ transaction }) => {
       setLang(Spanish);
       setUsedDate(formatSpanishDate(generatedDate));
     }
-  }, [language])
+  }, [language, generatedDate])
   
   const handleClick = async () => {
     if (!user) {
       return
     }
 
-    const res = await fetch('/api/expenses/' + transaction._id, {
+    const res = await fetch('https://money-dunn-right.onrender.com/api/expenses/' + transaction._id, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${user.token}`
