@@ -1,19 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import validator from 'validator'
 import { useTransactionsContext } from "../hooks/useTransactionsContext";
 import { useAuthContext } from '../hooks/useAuthContext';
+import { useLangContext } from '../hooks/useLangContext';
+import { Spanish, English } from './LangText/IncomeFormText';
 
 const IncomeForm = () => {
   const { dispatch } = useTransactionsContext();
   const { user } = useAuthContext();
+  const { language } = useLangContext();
   
+  const [lang, setLang] = useState(English);
   const [amount, setAmount] = useState('');
   const [source, setSource] = useState('');
   const [date, setDate] = useState('');
-  
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
-
   const [dateError, setDateError] = useState('')
 	
   const validateDate = (value) => {
@@ -24,6 +26,17 @@ const IncomeForm = () => {
       setDateError('Enter Valid Date!');
     }
   }
+
+  useEffect(() => {
+    if (language === 'English') {
+      setLang(English)
+    }
+
+    if (language === 'Spanish') {
+      setLang(Spanish)
+    }
+    
+  }, [language]);
 
 
   const handleSubmit = async (e) => {
@@ -67,7 +80,7 @@ const IncomeForm = () => {
     <form className='create' onSubmit={handleSubmit}>
       
 
-      <label>Amount </label>
+      <label>{lang.amountLabel}</label>
       <input
         type="number"
         step="0.01"
@@ -78,21 +91,21 @@ const IncomeForm = () => {
         className={emptyFields.includes('amount') ? 'error' : ''}
       />
 
-      <label>Source </label>
+      <label>{lang.sourceLabel}</label>
       <input
         type="text"
         maxLength="30"
         minLength="0"
-        placeholder="Enter Source"
+        placeholder={lang.sourcePlaceholder}
         onChange={(e) => setSource(e.target.value)}
         value={source}
         className={emptyFields.includes('source') ? 'error' : ''}
       />
 
-      <label>Date </label>
+      <label>{lang.dateLabel}</label>
       <input
         type="date"
-        placeholder="yyyy-mm-dd"
+        placeholder={lang.datePlaceholder}
         onChange={(e) => validateDate(e.target.value)}
         value={date}
         className={emptyFields.includes('date') ? 'error' : ''}
@@ -105,7 +118,7 @@ const IncomeForm = () => {
         }}
       >{dateError}</span>
 
-      <button className='add-transaction-btn'>Add Income</button>
+      <button className='add-transaction-btn'>{lang.buttonText}</button>
       {error && <div className='error'>{error}</div>}
     </form>
   )

@@ -20,7 +20,6 @@ const ExpenseForm = () => {
   const [date, setDate] = useState('');
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
-
   const [dateError, setDateError] = useState('')
 
   // console.log(lang)
