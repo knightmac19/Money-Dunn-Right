@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useSignup } from '../hooks/useSignup'
 import { useLangContext } from '../hooks/useLangContext'
-import {Spanish, English} from '../components/LangText/SignupPageText'
+import { Spanish, English } from '../components/LangText/SignupPageText'
 
 const Signup = () => {
   const { language } = useLangContext();

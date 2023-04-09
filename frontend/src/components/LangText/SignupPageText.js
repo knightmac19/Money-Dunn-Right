@@ -1,6 +1,6 @@
 export const Spanish = {
   formLabel: 'Crear Cuenta',
-  emailLabel: 'Email:',
+  emailLabel: 'Correo:',
   passwordLabel: 'Contraseña:',
   buttonText: 'Crear Cuenta',
   linkText: 'O iniciar sesión'
