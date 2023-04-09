@@ -3,7 +3,7 @@ import validator from 'validator'
 import { useTransactionsContext } from "../hooks/useTransactionsContext";
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLangContext } from '../hooks/useLangContext';
-import { Spanish, English } from './ExpenseFormText';
+import { Spanish, English } from './LangText/ExpenseFormText';
 
 const ExpenseForm = () => {
   const { dispatch } = useTransactionsContext();
@@ -12,7 +12,7 @@ const ExpenseForm = () => {
 
   // console.log('language ' + language)
 
-  const [lang, setLang] = useState(English)
+  const [lang, setLang] = useState(English);
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
@@ -43,7 +43,7 @@ const ExpenseForm = () => {
       setLang(Spanish)
     }
     
-  }, [language])
+  }, [language]);
 
 
   const handleSubmit = async (e) => {

@@ -1,14 +1,31 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import LangToggle from "./LangToggle";
+import { useLangContext } from "../hooks/useLangContext";
+import { Spanish, English } from './LangText/NavbarText';
 
 const Navbar = () => {
   const { logout } = useLogout();
-  const { user } = useAuthContext()
+  const { user } = useAuthContext();
+  const { language } = useLangContext();
+
+  const [lang, setLang] = useState(English);
+
+  useEffect(() => {
+    if (language === 'English') {
+      setLang(English)
+    }
+
+    if (language === 'Spanish') {
+      setLang(Spanish)
+    }
+    
+  }, [language]);
 
   const handleClick = (e) => {
-    logout()
+    logout();
   }
 
   return (
@@ -25,13 +42,13 @@ const Navbar = () => {
           {user && (
             <div className="user-email-container">
               <h3>{user.email}</h3>
-              <button onClick={handleClick}>Log out</button>
+              <button onClick={handleClick}>{lang.logoutBtnText}</button>
             </div>
           )}
           {!user && (
             <div className="nav-container">
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Signup</Link>
+              <Link to="/login">{lang.loginLinkText}</Link>
+              <Link to="/signup">{lang.logoutLinkText}</Link>
             </div>
           )}
         </nav>
