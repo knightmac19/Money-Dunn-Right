@@ -32,7 +32,6 @@ const TransactionDetails = ({ transaction }) => {
       return
     }
 
-    // console.log(transaction)
     const res = await fetch('/api/expenses/' + transaction._id, {
       method: 'DELETE',
       headers: {
