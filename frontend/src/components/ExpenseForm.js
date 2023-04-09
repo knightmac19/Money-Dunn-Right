@@ -2,10 +2,14 @@ import { useState } from 'react';
 import validator from 'validator'
 import { useTransactionsContext } from "../hooks/useTransactionsContext";
 import { useAuthContext } from '../hooks/useAuthContext';
+import { useLangContext } from '../hooks/useLangContext';
 
 const ExpenseForm = () => {
   const { dispatch } = useTransactionsContext();
   const { user } = useAuthContext();
+  const { language } = useLangContext();
+
+  console.log('language ' + language)
 
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
@@ -65,6 +69,8 @@ const ExpenseForm = () => {
       dispatch({type: 'CREATE_TRANSACTION', payload: json})
     }
   }
+
+  
 
   return (
     <form className='create' onSubmit={handleSubmit}>
