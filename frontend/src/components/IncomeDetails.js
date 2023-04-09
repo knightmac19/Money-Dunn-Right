@@ -1,41 +1,59 @@
+import { useState, useEffect } from "react";
 import { useTransactionsContext } from "../hooks/useTransactionsContext";
 import { useAuthContext } from '../hooks/useAuthContext';
+import { useLangContext } from "../hooks/useLangContext";
+import { Spanish, English, englishMonths, spanishMonths } from './LangText/IncomeDetailsText';
 
 const IncomeDetails = ({ transaction }) => {
-  const { dispatch } = useTransactionsContext();
-  const { user } = useAuthContext();
-
   const generatedDate = new Date(transaction.date).toISOString();
-  
 
-  const months = [
-    'empty', 
-    'January', 
-    'February', 
-    'March', 
-    'April', 
-    'May', 
-    'June', 
-    'July', 
-    'August', 
-    'September', 
-    'October', 
-    'November', 
-    'December'
-  ]
-  const formatDate = (date) => {
+  const formatSpanishDate = (date) => {
     let year = date.slice(0,4);
     let month = date.slice(5,7);
     let day = date.slice(8,10)
 
     if (month[0] === '0') {
-      month = months[month[1]];
+      month = spanishMonths[month[1]];
     } else {
-      month = months[month]
+      month = spanishMonths[month]
+    }
+
+    return `${day} ${month} ${year}`;
+  }
+
+  const formatEnglishDate = (date) => {
+    let year = date.slice(0,4);
+    let month = date.slice(5,7);
+    let day = date.slice(8,10)
+
+    if (month[0] === '0') {
+      month = englishMonths[month[1]];
+    } else {
+      month = englishMonths[month]
     }
 
     return `${month} ${day} ${year}`;
   }
+
+  const { dispatch } = useTransactionsContext();
+  const { user } = useAuthContext();
+  const { language } = useLangContext();
+
+  const [lang, setLang] = useState(English);
+  const [usedDate, setUsedDate] = useState(formatEnglishDate(generatedDate))
+
+  useEffect(() => {
+    if (language === 'English') {
+      setLang(English);
+      setUsedDate(formatEnglishDate(generatedDate));
+    }
+
+    if (language === 'Spanish') {
+      setLang(Spanish);
+      setUsedDate(formatSpanishDate(generatedDate))
+    }
+    
+  }, [language]);
   
 
   const handleClick = async () => {
@@ -59,8 +77,8 @@ const IncomeDetails = ({ transaction }) => {
   return (
     <div className="transaction-details">
       <h4 className="income-details-amount">+ ${transaction.amount}</h4>
-      <p><strong>Source: </strong>{transaction.source}</p>
-      <p>{formatDate(generatedDate)}</p>
+      <p><strong>{lang.sourceLabel}</strong>{transaction.source}</p>
+      <p>{usedDate}</p>
       <span
        onClick={handleClick}
        className='material-symbols-outlined'
