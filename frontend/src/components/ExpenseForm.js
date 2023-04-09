@@ -1,16 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import validator from 'validator'
 import { useTransactionsContext } from "../hooks/useTransactionsContext";
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLangContext } from '../hooks/useLangContext';
+import { Spanish, English } from './ExpenseFormText';
 
 const ExpenseForm = () => {
   const { dispatch } = useTransactionsContext();
   const { user } = useAuthContext();
   const { language } = useLangContext();
 
-  console.log('language ' + language)
+  // console.log('language ' + language)
 
+  const [lang, setLang] = useState(English)
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
@@ -20,6 +22,8 @@ const ExpenseForm = () => {
   const [emptyFields, setEmptyFields] = useState([]);
 
   const [dateError, setDateError] = useState('')
+
+  // console.log(lang)
 	
   const validateDate = (value) => {
     
@@ -29,6 +33,17 @@ const ExpenseForm = () => {
       setDateError('Enter Valid Date!');
     }
   }
+
+  useEffect(() => {
+    if (language === 'English') {
+      setLang(English)
+    }
+
+    if (language === 'Spanish') {
+      setLang(Spanish)
+    }
+    
+  }, [language])
 
 
   const handleSubmit = async (e) => {
@@ -76,7 +91,7 @@ const ExpenseForm = () => {
     <form className='create' onSubmit={handleSubmit}>
       
 
-      <label>Amount </label>
+      <label>{lang.amountLabel}</label>
       <input
         type="number"
         step="0.01"
@@ -87,43 +102,43 @@ const ExpenseForm = () => {
         className={emptyFields.includes('amount') ? 'error' : ''}
       />
 
-      <label>Category </label>
+      <label>{lang.categoryLabel}</label>
       <input
         type="text"
         maxLength="30"
         minLength="0"
-        placeholder="Enter Category"
+        placeholder={lang.categoryPlaceholder}
         onChange={(e) => setCategory(e.target.value)}
         value={category}
         className={emptyFields.includes('category') ? 'error' : ''}
       />
 
-      <label>Note </label>
+      <label>{lang.noteLabel}</label>
       <input
         type="text"
         maxLength="120"
         minLength="0"
-        placeholder="Add Note"
+        placeholder={lang.notePlaceholder}
         onChange={(e) => setDescription(e.target.value)}
         value={description}
         className={emptyFields.includes('description') ? 'error' : ''}
       />
 
-      <label>Account </label>
+      <label>{lang.accountLabel}</label>
       <input
         type="text"
         maxLength="30"
         minLength="0"
-        placeholder="Enter Account Name"
+        placeholder={lang.accountPlaceholder}
         onChange={(e) => setAccount(e.target.value)}
         value={account}
         className={emptyFields.includes('account') ? 'error' : ''}
       />
 
-      <label>Date </label>
+      <label>{lang.dateLabel}</label>
       <input
         type="date"
-        placeholder="yyyy-mm-dd"
+        placeholder={lang.datePlaceholder}
         onChange={(e) => validateDate(e.target.value)}
         value={date}
         className={emptyFields.includes('date') ? 'error' : ''}
@@ -136,7 +151,7 @@ const ExpenseForm = () => {
         }}
       >{dateError}</span>
 
-      <button className='add-transaction-btn'>Add Expense</button>
+      <button className='add-transaction-btn'>{lang.buttonText}</button>
       {error && <div className='error'>{error}</div>}
     </form>
   )

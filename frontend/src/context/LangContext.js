@@ -4,10 +4,10 @@ export const LangContext = createContext()
 
 export const langReducer = (state, action) => {
   switch( action.type ) {
-    case 'ENGLISH':
-      return { language: 'ENGLISH' }
-    case 'ESPAÑOL':
-      return { language: 'ESPAÑOL' }
+    case 'English':
+      return { language: 'English' }
+    case 'Spanish':
+      return { language: 'Spanish' }
     default: 
       return state
   }
@@ -15,7 +15,7 @@ export const langReducer = (state, action) => {
 
 export const LangContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(langReducer, {
-    language: 'ENGLISH'
+    language: 'English'
   })
 
   return (

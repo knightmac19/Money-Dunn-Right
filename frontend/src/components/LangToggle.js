@@ -13,13 +13,13 @@ const LangToggle = () => {
     if (btn === 'english-btn') {
       setEnglishFocused('english-btn-focused')
       setSpanishFocused('')
-      dispatch({ type: 'ENGLISH', payload: 'ENGLISH' })
+      dispatch({ type: 'English', payload: 'English' })
     }
 
     if (btn === 'spanish-btn') {
       setEnglishFocused('')
       setSpanishFocused('spanish-btn-focused')
-      dispatch({ type: 'ESPAÑOL', payload: 'ESPAÑOL' })
+      dispatch({ type: 'Spanish', payload: 'Spanish' })
     }
   }
 
