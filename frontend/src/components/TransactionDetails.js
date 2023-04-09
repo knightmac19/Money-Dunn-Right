@@ -1,43 +1,32 @@
+import { useState, useEffect } from "react";
 import { useTransactionsContext } from "../hooks/useTransactionsContext";
 import { useAuthContext } from '../hooks/useAuthContext';
+import { useLangContext } from "../hooks/useLangContext";
+import { Spanish, English } from './LangText/TransactionDetailsText';
+import { formatEnglishDate, formatSpanishDate } from "./LangText/HandleDate";
 
 const TransactionDetails = ({ transaction }) => {
+  const generatedDate = new Date(transaction.date).toISOString();
+
   const { dispatch } = useTransactionsContext();
   const { user } = useAuthContext();
-
-  const generatedDate = new Date(transaction.date).toISOString();
+  const { language } = useLangContext();
   
+  const [lang, setLang] = useState(English);
+  const [usedDate, setUsedDate] = useState(formatEnglishDate(generatedDate));
 
-  const months = [
-    'empty', 
-    'January', 
-    'February', 
-    'March', 
-    'April', 
-    'May', 
-    'June', 
-    'July', 
-    'August', 
-    'September', 
-    'October', 
-    'November', 
-    'December'
-  ]
-  const formatDate = (date) => {
-    let year = date.slice(0,4);
-    let month = date.slice(5,7);
-    let day = date.slice(8,10)
-
-    if (month[0] === '0') {
-      month = months[month[1]];
-    } else {
-      month = months[month]
+  useEffect(() => {
+    if (language === 'English') {
+      setLang(English);
+      setUsedDate(formatEnglishDate(generatedDate));
     }
 
-    return `${month} ${day} ${year}`;
-  }
+    if (language === 'Spanish') {
+      setLang(Spanish);
+      setUsedDate(formatSpanishDate(generatedDate));
+    }
+  }, [language])
   
-
   const handleClick = async () => {
     if (!user) {
       return
@@ -60,10 +49,10 @@ const TransactionDetails = ({ transaction }) => {
   return (
     <div className="transaction-details">
       <h4 className="expense-details-amount">- ${transaction.amount}</h4>
-      <p><strong>Category: </strong>{transaction.category}</p>
-      <p><strong>Note: </strong>{transaction.description}</p>
-      <p><strong>Account: </strong>{transaction.account}</p>
-      <p>{formatDate(generatedDate)}</p>
+      <p><strong>{lang.categoryLabel}</strong>{transaction.category}</p>
+      <p><strong>{lang.noteLabel}</strong>{transaction.description}</p>
+      <p><strong>{lang.accountLabel}</strong>{transaction.account}</p>
+      <p>{usedDate}</p>
       <span
        onClick={handleClick}
        className='material-symbols-outlined'
