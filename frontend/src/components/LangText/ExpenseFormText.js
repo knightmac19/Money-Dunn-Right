@@ -8,7 +8,10 @@ export const Spanish = {
   accountPlaceholder: 'Nombre de Cuenta',
   dateLabel: 'Fecha',
   datePlaceholder: 'yyyy-mm-dd',
-  buttonText: 'Agrega Gasto'
+  buttonText: 'Agrega Gasto',
+  notUserErr: 'Hay que iniciar sesión',
+  missingFieldsErr: 'Por favor rellena todos los datos',
+  invalidDateErr: 'Introduce una fecha válida'
 }
 
 export const English = {
@@ -21,5 +24,8 @@ export const English = {
   accountPlaceholder: 'Enter Account Name',
   dateLabel: 'Date',
   datePlaceholder: 'yyyy-mm-dd',
-  buttonText: 'Add Expense'
+  buttonText: 'Add Expense',
+  notUserErr: 'You must be logged in',
+  missingFieldsErr: 'Please fill in all the fields',
+  invalidDateErr: 'Enter a valid date'
 }

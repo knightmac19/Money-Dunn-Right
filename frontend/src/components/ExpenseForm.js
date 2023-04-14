@@ -29,7 +29,7 @@ const ExpenseForm = () => {
     if (validator.isDate(value)) {
       setDate(value);
     } else {
-      setDateError('Enter Valid Date!');
+      setDateError(lang.invalidDateErr);
     }
   }
 
@@ -49,7 +49,7 @@ const ExpenseForm = () => {
     e.preventDefault();
 
     if (!user) {
-      setError('You must be logged in')
+      setError(lang.notUserErr);
       return
     }
 
@@ -67,7 +67,7 @@ const ExpenseForm = () => {
     const json = await response.json();
 
     if (!response.ok) {
-      setError(json.error);
+      setError(lang.missingFieldsErr);
       setEmptyFields(json.emptyFields);
     }
 
