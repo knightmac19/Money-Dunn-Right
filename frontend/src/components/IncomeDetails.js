@@ -26,7 +26,7 @@ const IncomeDetails = ({ transaction }) => {
       setUsedDate(formatSpanishDate(generatedDate))
     }
     
-  }, [language]);
+  }, [language, generatedDate]);
   
 
   const handleClick = async () => {

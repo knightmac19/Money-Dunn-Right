@@ -25,7 +25,7 @@ const TransactionDetails = ({ transaction }) => {
       setLang(Spanish);
       setUsedDate(formatSpanishDate(generatedDate));
     }
-  }, [language])
+  }, [language, generatedDate])
   
   const handleClick = async () => {
     if (!user) {
