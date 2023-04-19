@@ -23,7 +23,7 @@ const IncomeForm = () => {
     if (validator.isDate(value)) {
       setDate(value);
     } else {
-      setDateError('Enter Valid Date!');
+      setDateError(lang.invalidDateErr);
     }
   }
 
@@ -43,7 +43,7 @@ const IncomeForm = () => {
     e.preventDefault();
 
     if (!user) {
-      setError('You must be logged in')
+      setError(lang.notUserErr);
       return
     }
 
@@ -61,7 +61,7 @@ const IncomeForm = () => {
     const json = await response.json();
 
     if (!response.ok) {
-      setError(json.error);
+      setError(lang.missingFieldsErr);
       setEmptyFields(json.emptyFields);
     }
 

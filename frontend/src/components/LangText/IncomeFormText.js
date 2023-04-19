@@ -4,7 +4,10 @@ export const Spanish = {
   sourcePlaceholder: 'Ingresa Fuente',
   dateLabel: 'Fecha',
   datePlaceholder: 'yyyy-mm-dd',
-  buttonText: 'Agrega Ingreso'
+  buttonText: 'Agrega Ingreso',
+  notUserErr: 'Hay que iniciar sesión',
+  missingFieldsErr: 'Por favor rellena todos los datos',
+  invalidDateErr: 'Introduce una fecha válida'
 }
 
 export const English = {
@@ -13,5 +16,8 @@ export const English = {
   sourcePlaceholder: 'Enter Source',
   dateLabel: 'Date',
   datePlaceholder: 'yyyy-mm-dd',
-  buttonText: 'Add Income'
+  buttonText: 'Add Income',
+  notUserErr: 'You must be logged in',
+  missingFieldsErr: 'Please fill in all the fields',
+  invalidDateErr: 'Enter a valid date'
 }

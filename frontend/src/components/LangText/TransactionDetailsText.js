@@ -1,5 +1,5 @@
 export const Spanish = {
-  categoryLabel: 'Fuente: ',
+  categoryLabel: 'Categoría: ',
   noteLabel: 'Nota: ',
   accountLabel: 'Cuenta: '
 }
