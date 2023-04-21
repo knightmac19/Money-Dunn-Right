@@ -30,26 +30,28 @@ const IncomeDetails = ({ transaction }) => {
     
   }, [language, generatedDate]);
 
-  const removeFocusedTrashIcon = (e) => {
-    
-    if (e.target.innerHTML === 'delete') {
-      return
-    }
-
-    if (trashClicks > 0) {
-      setTrashClicks(0)
-      setTrashIconClass('material-symbols-outlined trash-icon-default')
-    }
-    
-  }
+  
 
   useEffect(() => {
+    const removeFocusedTrashIcon = (e) => {
+    
+      if (e.target.innerHTML === 'delete') {
+        return
+      }
+  
+      if (trashClicks > 0) {
+        setTrashClicks(0)
+        setTrashIconClass('material-symbols-outlined trash-icon-default')
+      }
+      
+    }
+
     document.body.addEventListener('click', removeFocusedTrashIcon )
 
     return function cleanup() {
       window.removeEventListener('click', removeFocusedTrashIcon )
     }
-  }, [trashClicks, removeFocusedTrashIcon])
+  }, [trashClicks])
 
   
   
@@ -60,7 +62,7 @@ const IncomeDetails = ({ transaction }) => {
       return
     }
 
-    if (trashClicks == 0) {
+    if (trashClicks === 0) {
       setTrashClicks(1)
       setTrashIconClass('material-symbols-outlined trash-icon-one-click')
       
