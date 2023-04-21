@@ -4,6 +4,7 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { useLangContext } from "../hooks/useLangContext";
 import { Spanish, English } from './LangText/TransactionDetailsText';
 import { formatEnglishDate, formatSpanishDate } from "./LangText/HandleDate";
+import DualRing from "./DualRing";
 
 const TransactionDetails = ({ transaction }) => {
   const generatedDate = new Date(transaction.date).toISOString();
@@ -15,7 +16,8 @@ const TransactionDetails = ({ transaction }) => {
   const [lang, setLang] = useState(English);
   const [trashClicks, setTrashClicks] = useState(0);
   const [trashIconClass, setTrashIconClass] = useState('material-symbols-outlined trash-icon-default')
-  const [usedDate, setUsedDate] = useState(formatEnglishDate(generatedDate));
+  const [showDualRing, setShowDualRing] = useState(false)
+  const [usedDate, setUsedDate] = useState(formatEnglishDate(generatedDate))
 
   useEffect(() => {
     if (language === 'English') {
@@ -49,7 +51,7 @@ const TransactionDetails = ({ transaction }) => {
     return function cleanup() {
       window.removeEventListener('click', removeFocusedTrashIcon )
     }
-  }, [trashClicks])
+  }, [trashClicks, showDualRing])
 
   
   
@@ -65,6 +67,7 @@ const TransactionDetails = ({ transaction }) => {
     }
 
     if (trashClicks > 0) {
+      setShowDualRing(true)
       const res = await fetch('https://money-dunn-right.onrender.com/api/expenses/' + transaction._id, {
         method: 'DELETE',
         headers: {
@@ -88,11 +91,12 @@ const TransactionDetails = ({ transaction }) => {
       <p><strong>{lang.noteLabel}</strong>{transaction.description}</p>
       <p><strong>{lang.accountLabel}</strong>{transaction.account}</p>
       <p>{usedDate}</p>
-      <span
-       onClick={handleClick}
-       className={trashIconClass}
-      >delete
-      </span>
+
+      {
+        showDualRing ? <DualRing></DualRing> : 
+        <span onClick={handleClick} className={trashIconClass}>delete</span>
+      }
+    
     </div>
   );
     
