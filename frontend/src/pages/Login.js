@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { useLogin } from '../hooks/useLogin'
 import { useLangContext } from '../hooks/useLangContext'
 import { Spanish, English } from '../components/LangText/LoginPageText'
