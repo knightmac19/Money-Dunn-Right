@@ -13,12 +13,14 @@ const IncomeDetails = ({ transaction }) => {
   const { language } = useLangContext();
 
   const [lang, setLang] = useState(English);
+  const [trashClicks, setTrashClicks] = useState(0);
+  const [trashIconClass, setTrashIconClass] = useState('material-symbols-outlined trash-icon-default')
   const [usedDate, setUsedDate] = useState(formatEnglishDate(generatedDate));
 
   useEffect(() => {
     if (language === 'English') {
       setLang(English);
-      setUsedDate(formatEnglishDate(generatedDate));
+      setUsedDate(formatEnglishDate(generatedDate))
     }
 
     if (language === 'Spanish') {
@@ -27,23 +29,53 @@ const IncomeDetails = ({ transaction }) => {
     }
     
   }, [language, generatedDate]);
+
+  useEffect(() => {
+    document.body.addEventListener('click', removeFocusedTrashIcon )
+
+    return function cleanup() {
+      window.removeEventListener('click', removeFocusedTrashIcon )
+    }
+  }, [trashClicks])
+
+  const removeFocusedTrashIcon = (e) => {
+    
+    if (e.target.innerHTML === 'delete') {
+      return
+    }
+
+    if (trashClicks > 0) {
+      setTrashClicks(0)
+      setTrashIconClass('material-symbols-outlined trash-icon-default')
+    }
+    
+  }
   
 
   const handleClick = async () => {
+
     if (!user) {
       return
     }
 
-    const res = await fetch('https://money-dunn-right.onrender.com/api/income/' + transaction._id, {
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${user.token}`
-      }
-    });
-    const json = await res.json();
+    if (trashClicks == 0) {
+      setTrashClicks(1)
+      setTrashIconClass('material-symbols-outlined trash-icon-one-click')
+      
+    }
 
-    if (res.ok) {
-      dispatch({type: 'DELETE_TRANSACTION', payload: json})
+    if (trashClicks > 0) {
+        const res = await fetch('https://money-dunn-right.onrender.com/api/income/' + transaction._id, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${user.token}`
+          }
+        });
+        const json = await res.json();
+
+        if (res.ok) {
+          dispatch({type: 'DELETE_TRANSACTION', payload: json})
+        }
     }
   }
 
@@ -54,7 +86,7 @@ const IncomeDetails = ({ transaction }) => {
       <p>{usedDate}</p>
       <span
        onClick={handleClick}
-       className='material-symbols-outlined'
+       className={trashIconClass}
       >delete
       </span>
     </div>
