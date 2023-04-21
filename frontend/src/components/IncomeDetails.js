@@ -30,14 +30,6 @@ const IncomeDetails = ({ transaction }) => {
     
   }, [language, generatedDate]);
 
-  useEffect(() => {
-    document.body.addEventListener('click', removeFocusedTrashIcon )
-
-    return function cleanup() {
-      window.removeEventListener('click', removeFocusedTrashIcon )
-    }
-  }, [trashClicks])
-
   const removeFocusedTrashIcon = (e) => {
     
     if (e.target.innerHTML === 'delete') {
@@ -50,6 +42,16 @@ const IncomeDetails = ({ transaction }) => {
     }
     
   }
+
+  useEffect(() => {
+    document.body.addEventListener('click', removeFocusedTrashIcon )
+
+    return function cleanup() {
+      window.removeEventListener('click', removeFocusedTrashIcon )
+    }
+  }, [trashClicks, removeFocusedTrashIcon])
+
+  
   
 
   const handleClick = async () => {

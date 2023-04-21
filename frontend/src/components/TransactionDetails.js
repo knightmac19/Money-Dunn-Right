@@ -29,14 +29,6 @@ const TransactionDetails = ({ transaction }) => {
     }
   }, [language, generatedDate])
 
-  useEffect(() => {
-    document.body.addEventListener('click', removeFocusedTrashIcon )
-
-    return function cleanup() {
-      window.removeEventListener('click', removeFocusedTrashIcon )
-    }
-  }, [trashClicks])
-
   const removeFocusedTrashIcon = (e) => {
     
     if (e.target.innerHTML === 'delete') {
@@ -46,9 +38,18 @@ const TransactionDetails = ({ transaction }) => {
     if (trashClicks > 0) {
       setTrashClicks(0)
       setTrashIconClass('material-symbols-outlined trash-icon-default')
-    }
-    
+    } 
   }
+
+  useEffect(() => {
+    document.body.addEventListener('click', removeFocusedTrashIcon )
+
+    return function cleanup() {
+      window.removeEventListener('click', removeFocusedTrashIcon )
+    }
+  }, [trashClicks, removeFocusedTrashIcon])
+
+  
   
   const handleClick = async (e) => {
     if (!user) {
