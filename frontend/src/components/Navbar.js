@@ -41,7 +41,7 @@ const Navbar = () => {
         <nav>
           {user && (
             <div className="user-email-container">
-              <h3>{user.email}</h3>
+              <p>{user.email}</p>
               <button onClick={handleClick}>{lang.logoutBtnText}</button>
             </div>
           )}

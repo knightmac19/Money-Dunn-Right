@@ -94,7 +94,7 @@ header a {
   background-color: var(--gray-btn);
   color: var(--cards-background);
   border: none;
-  font-size: 16px;
+  font-size: 0.8em;
   padding: 4px 8px 4px 8px;
   font-weight: bold;
   cursor: pointer;
@@ -362,7 +362,8 @@ nav button {
   color: var(--primary);
   background-color: var(--cards-background);
   border: none;
-  font-size: 18px;
+  font-size: 0.8em;
+  font-weight: bold;
   padding: 4px 8px 4px 8px;
   cursor: pointer;
   border-radius: 5px;
@@ -386,6 +387,10 @@ nav button:active {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+}
+
+.user-email-container p {
+  font-size: 1em;
 }
 
 
@@ -412,6 +417,19 @@ nav button:active {
   }
   .nav-header-small {
     display: none;
+  }
+
+  .user-email-container p {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  .lang-container button {
+    font-size: 1em;
+  }
+
+  nav button {
+    font-size: 1em;
   }
 
   
@@ -443,6 +461,11 @@ nav button:active {
     gap: 20px;
     flex-direction: row;
   }
+
+  .user-email-container p {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
   
 }
 
@@ -470,6 +493,11 @@ nav button:active {
   .nav-container {
     gap: 20px;
     flex-direction: row;
+  }
+
+  .user-email-container p {
+    font-size: 1.5em;
+    font-weight: bold;
   }
   
 }
