@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { default: isEmail } = require('validator/lib/isEmail');
 
 const Schema = mongoose.Schema;
 
@@ -27,6 +28,10 @@ const expenseSchema = new Schema({
     type: String,
     required: true
   },
+  user_email: {
+    type: String,
+    required: true
+  }
 
 }, { timestamps: true });
 

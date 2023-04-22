@@ -32,7 +32,7 @@ const getSingleIncome = async (req, res) => {
 
 // create a new income
 const createIncome = async (req, res) => {
-  const {date, amount, source} = req.body;
+  const {date, amount, source, user_email} = req.body;
 
   let emptyFields = [];
 
@@ -53,7 +53,7 @@ const createIncome = async (req, res) => {
 
   try {
     const user_id = req.user._id
-    const income = await Income.create({date, amount, source, user_id});
+    const income = await Income.create({date, amount, source, user_id, user_email});
     res.status(200).json(income);
   } catch (err) {
     res.status(400).json({

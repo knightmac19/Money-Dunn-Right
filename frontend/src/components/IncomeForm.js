@@ -10,7 +10,8 @@ const IncomeForm = () => {
   const { dispatch } = useTransactionsContext();
   const { user } = useAuthContext();
   const { language } = useLangContext();
-  
+  const user_email = user.email;
+
   const [loading, setLoading] = useState(false)
   const [lang, setLang] = useState(English);
   const [amount, setAmount] = useState('');
@@ -19,6 +20,7 @@ const IncomeForm = () => {
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
   const [dateError, setDateError] = useState('')
+
 	
   const validateDate = (value) => {
     
@@ -50,7 +52,7 @@ const IncomeForm = () => {
       return
     }
 
-    const income = { amount, source, date }
+    const income = { amount, source, date, user_email }
 
     const response = await fetch('/api/income/', {
       method: 'POST',

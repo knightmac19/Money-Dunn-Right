@@ -10,6 +10,7 @@ const ExpenseForm = () => {
   const { dispatch } = useTransactionsContext();
   const { user } = useAuthContext();
   const { language } = useLangContext();
+  const user_email = user.email
 
   const [loading, setLoading] = useState(false)
   const [lang, setLang] = useState(English);
@@ -52,7 +53,7 @@ const ExpenseForm = () => {
       return
     }
 
-    const transaction = { amount, category, description, account, date }
+    const transaction = { amount, category, description, account, date, user_email }
 
     const response = await fetch('/api/expenses/', {
       method: 'POST',
