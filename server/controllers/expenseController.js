@@ -32,7 +32,9 @@ const getSingleExpense = async (req, res) => {
 
 // create a new expense
 const createExpense = async (req, res) => {
-  const {date, amount, category, description, account} = req.body;
+  console.log(req.user)
+  console.log(req.body)
+  const {date, amount, category, description, account, user_email} = req.body;
 
   let emptyFields = [];
 
@@ -59,7 +61,7 @@ const createExpense = async (req, res) => {
 
   try {
     const user_id = req.user._id
-    const expense = await Expense.create({date, amount, category, description, account, user_id});
+    const expense = await Expense.create({date, amount, category, description, account, user_id, user_email});
     res.status(200).json(expense);
   } catch (err) {
     res.status(400).json({

@@ -90,6 +90,7 @@ const IncomeDetails = ({ transaction }) => {
     <div className="transaction-details">
       <h4 className="income-details-amount">+ ${transaction.amount}</h4>
       <p><strong>{lang.sourceLabel}</strong>{transaction.source}</p>
+      <p><strong>{lang.userLabel}</strong>{transaction.user_email}</p>
       <p>{usedDate}</p>
       {
         showDualRing ? <DualRing></DualRing> : 

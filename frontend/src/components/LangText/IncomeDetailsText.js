@@ -1,7 +1,9 @@
 export const Spanish = {
-  sourceLabel: 'Fuente: '
+  sourceLabel: 'Fuente: ',
+  userLabel: 'Usuario: '
 }
 
 export const English = {
-  sourceLabel: 'Source: '
+  sourceLabel: 'Source: ',
+  userLabel: 'User: '
 }

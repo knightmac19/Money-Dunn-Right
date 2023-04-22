@@ -90,6 +90,7 @@ const TransactionDetails = ({ transaction }) => {
       <p><strong>{lang.categoryLabel}</strong>{transaction.category}</p>
       <p><strong>{lang.noteLabel}</strong>{transaction.description}</p>
       <p><strong>{lang.accountLabel}</strong>{transaction.account}</p>
+      <p><strong>{lang.userLabel}</strong>{transaction.user_email}</p>
       <p>{usedDate}</p>
 
       {
