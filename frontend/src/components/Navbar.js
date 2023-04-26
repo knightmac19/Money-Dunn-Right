@@ -4,7 +4,7 @@ import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useLangContext } from "../hooks/useLangContext";
 import { Spanish, English } from './LangText/NavbarText';
-
+import LangToggle from "./LangToggle";
 
 
 const Navbar = () => {
@@ -37,6 +37,7 @@ const Navbar = () => {
             <h1 className="nav-header-large">Money Dunn Right</h1>
             <h1 className="nav-header-small">MDR</h1>
           </Link>
+          <LangToggle />
         </div>
         <nav>
           {user && (

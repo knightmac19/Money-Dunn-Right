@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useLangContext } from '../hooks/useLangContext';
 
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
 import ArrowCircleLeftOutlinedIcon from '@mui/icons-material/ArrowCircleLeftOutlined';
@@ -11,33 +10,12 @@ import { peers } from './peersData'
 
 const SideBar = () => {
 
-  
-
-  const { dispatch } = useLangContext();
-
-  const [englishFocused, setEnglishFocused] = useState('english-btn-focused')
-  const [spanishFocused, setSpanishFocused] = useState('')
   const [sidebarOpen, setSidebarOpen] = useState(false);
   // const [acceptClicks, setAcceptClicks] = useState(0)
   const [acceptIconSize, setAcceptIconSize] = useState('medium')
   // const [acceptIconClass, setAcceptIconClass] = useState('accept-request-icon')
 
-  const handleClick = (e) => {
-    let btn = e.target.name
-
-    if (btn === 'english-btn') {
-      setEnglishFocused('english-btn-focused')
-      setSpanishFocused('')
-      dispatch({ type: 'English', payload: 'English' })
-    }
-
-    if (btn === 'spanish-btn') {
-      setEnglishFocused('')
-      setSpanishFocused('spanish-btn-focused')
-      dispatch({ type: 'Spanish', payload: 'Spanish' })
-    }
-  }
-
+  
   const acceptRequestClick = (e) => {
     console.log('accept request')
     console.log(e.target)
@@ -63,7 +41,7 @@ const SideBar = () => {
         {sidebarOpen ? <ArrowCircleLeftOutlinedIcon  fontSize="large" onClick={toggleSidebar} /> : <ArrowCircleRightOutlinedIcon className="white-arrow" fontSize="large" onClick={toggleSidebar} /> }
         
       </button>
-      <div className={sidebarOpen ? "lang-container" : "lang-container-hide"}>
+      {/* <div className={sidebarOpen ? "lang-container" : "lang-container-hide"}>
         <button
           name="english-btn"
           id={englishFocused}
@@ -80,7 +58,7 @@ const SideBar = () => {
           Español
         </button>
         
-      </div>
+      </div> */}
       <div className={sidebarOpen ? "" : "peers-container-hide"}>
         <div className="peers">
           <ul>My Peers
