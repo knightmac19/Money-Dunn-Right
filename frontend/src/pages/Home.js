@@ -6,12 +6,15 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import TransactionDetails from "../components/TransactionDetails";
 import IncomeDetails from "../components/IncomeDetails";
 import TransactionForm from "../components/TransactionForm";
+import SideBar from "../components/SideBar";
 
 
 
 const Home = () => {
   const {transactions, dispatch} = useTransactionsContext();
   const {user} = useAuthContext()
+
+  
 
   // sort by date
   const byDate = (a, b) => {
@@ -53,8 +56,10 @@ const Home = () => {
   }, [dispatch, user]);
 
   return (
-    <div className="home">
+    <div>
       
+    <div className="home">
+    <SideBar />
       <TransactionForm />
       <div className="transactions">
         { transactions && transactions.map((transaction) => (
@@ -64,6 +69,8 @@ const Home = () => {
         ))}
       </div>
       
+    </div>
+    
     </div>
   )
 }

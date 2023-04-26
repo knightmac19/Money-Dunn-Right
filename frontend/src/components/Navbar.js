@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
-import LangToggle from "./LangToggle";
 import { useLangContext } from "../hooks/useLangContext";
 import { Spanish, English } from './LangText/NavbarText';
+
+
 
 const Navbar = () => {
   const { logout } = useLogout();
@@ -36,7 +37,6 @@ const Navbar = () => {
             <h1 className="nav-header-large">Money Dunn Right</h1>
             <h1 className="nav-header-small">MDR</h1>
           </Link>
-          <LangToggle />
         </div>
         <nav>
           {user && (
