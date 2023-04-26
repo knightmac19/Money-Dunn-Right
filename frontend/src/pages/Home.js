@@ -26,14 +26,14 @@ const Home = () => {
     
     const fetchTransactions = async () => {
       // console.log('is fetchTransactions firing?')
-      const expensesResponse = await fetch('https://money-dunn-right.onrender.com/api/expenses/', {
+      const expensesResponse = await fetch('/api/expenses/', {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }
       });
       const expensesJson = await expensesResponse.json();
 
-      const incomeResponse = await fetch('https://money-dunn-right.onrender.com/api/income/', {
+      const incomeResponse = await fetch('/api/income/', {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }

@@ -55,7 +55,7 @@ const ExpenseForm = () => {
 
     const transaction = { amount, category, description, account, date, user_email }
 
-    const response = await fetch('https://money-dunn-right.onrender.com/api/expenses/', {
+    const response = await fetch('/api/expenses/', {
       method: 'POST',
       body: JSON.stringify(transaction),
       headers: {
