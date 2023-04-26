@@ -641,7 +641,7 @@ nav button:active {
   left: 0;
   width: 280px;
   transition: width 0.3s ease-in-out;
-  height: calc(100% - 96px);
+  height: calc(100% - 125px);
   background-color: var(--header-background);
   
 }
