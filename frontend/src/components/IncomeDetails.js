@@ -72,7 +72,7 @@ const IncomeDetails = ({ transaction }) => {
 
     if (trashClicks > 0) {
       setShowDualRing(true)
-      const res = await fetch('/api/income/' + transaction._id, {
+      const res = await fetch('https://money-dunn-right.onrender.com/api/income/' + transaction._id, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${user.token}`
