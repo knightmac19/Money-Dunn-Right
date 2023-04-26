@@ -65,4 +65,24 @@ const signupUser = async (req, res) => {
 //   res.status(200).json(user);
 // }
 
-module.exports = { loginUser, signupUser, getAllUsers }
+const addPeer = async (req, res) => {
+  try {
+    const userToAdd = await User.findOne({ email: req.body.peer_email})
+  
+    console.log(userToAdd);
+    res.status(200).json(res)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+
+  
+
+  // const updatedUser = await User.findOneAndUpdate(
+  //   { _id: req.params.userId },
+  //   { $addToSet: {peers: }}
+  // )
+
+
+}
+
+module.exports = { loginUser, signupUser, getAllUsers, addPeer }

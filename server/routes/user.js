@@ -4,7 +4,8 @@ const express = require('express');
 const { 
   signupUser, 
   loginUser, 
-  getAllUsers 
+  getAllUsers,
+  addPeer
 } = require('../controllers/userController');
 
 const router = express.Router();
@@ -17,6 +18,9 @@ router.post('/signup', signupUser);
 
 // see all users
 router.get('/', getAllUsers);
+
+// add a peer
+router.get('/peer', addPeer);
 
 // DELETE a single Income
 // router.delete('/:id', deleteUser);

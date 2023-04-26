@@ -13,7 +13,13 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  peers: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  ]
 
 }, { timestamps: true });
 
