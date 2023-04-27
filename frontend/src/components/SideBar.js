@@ -4,10 +4,10 @@ import { Spanish, English } from './LangText/SideBarText'
 
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
 import ArrowCircleLeftOutlinedIcon from '@mui/icons-material/ArrowCircleLeftOutlined';
-import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-import { peerRequests } from './peerRequestsData';
-import { peers } from './peersData'
+// import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
+// import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+// import { peerRequests } from './peerRequestsData';
+// import { peers } from './peersData'
 
 
 const SideBar = () => {
@@ -15,9 +15,6 @@ const SideBar = () => {
 
   const [lang, setLang] = useState(English);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  // const [acceptClicks, setAcceptClicks] = useState(0)
-  const [acceptIconSize, setAcceptIconSize] = useState('medium')
-  // const [acceptIconClass, setAcceptIconClass] = useState('accept-request-icon')
 
   useEffect(() => {
     if (language === 'English') {
@@ -30,11 +27,10 @@ const SideBar = () => {
     
   }, [language]);
 
-
   const acceptRequestClick = (e) => {
     console.log('accept request')
     console.log(e.target)
-    setAcceptIconSize('large')
+    console.log('call modal to confirm user selection')
   }
 
   const rejectRequestClick = (e) => {
@@ -56,7 +52,7 @@ const SideBar = () => {
         {sidebarOpen ? <ArrowCircleLeftOutlinedIcon  fontSize="large" onClick={toggleSidebar} /> : <ArrowCircleRightOutlinedIcon className="white-arrow" fontSize="large" onClick={toggleSidebar} /> }
         
       </button>
-      <div className={sidebarOpen ? "" : "peers-container-hide"}>
+      {/* <div className={sidebarOpen ? "" : "peers-container-hide"}>
         <div className="peers">
           <ul>{lang.peersListText}
             {peers && peers.map((peer) => (
@@ -76,7 +72,7 @@ const SideBar = () => {
                 <CheckCircleOutlinedIcon  
                   className='accept-request-icon'
                   onClick={acceptRequestClick}
-                  fontSize={acceptIconSize}
+                  fontSize='medium'
                 />
                 <CloseOutlinedIcon 
                   className="reject-request-icon"
@@ -86,7 +82,7 @@ const SideBar = () => {
             ))}
           </ul>
         </div>
-      </div>
+      </div> */}
       
     </div>
   )

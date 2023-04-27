@@ -618,15 +618,15 @@ nav button:active {
   left: 5px;
 }
 
-.accept-request-icon:hover {
+.accept-request-icon-activated {
   background-color: var(--cards-background);
   color: var(--primary);
 }
 
-/* .accept-request-icon:hover, .reject-request-icon:hover {
+.accept-request-icon:hover, .reject-request-icon:hover {
   cursor: pointer;
   color: var(--cards-background);
-} */
+}
 
 /* SideBar start */
 .sidebar {
