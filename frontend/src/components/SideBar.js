@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { useLangContext } from "../hooks/useLangContext";
-import { Spanish, English } from './LangText/SideBarText'
+import { useState } from "react";
+// import { useLangContext } from "../hooks/useLangContext";
+// import { Spanish, English } from './LangText/SideBarText'
 
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
 import ArrowCircleLeftOutlinedIcon from '@mui/icons-material/ArrowCircleLeftOutlined';
@@ -11,39 +11,39 @@ import ArrowCircleLeftOutlinedIcon from '@mui/icons-material/ArrowCircleLeftOutl
 
 
 const SideBar = () => {
-  const { language } = useLangContext();
+  // const { language } = useLangContext();
 
-  const [lang, setLang] = useState(English);
+  // const [lang, setLang] = useState(English);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  useEffect(() => {
-    if (language === 'English') {
-      setLang(English);
-    }
+  // useEffect(() => {
+  //   if (language === 'English') {
+  //     setLang(English);
+  //   }
 
-    if (language === 'Spanish') {
-      setLang(Spanish);
-    }
+  //   if (language === 'Spanish') {
+  //     setLang(Spanish);
+  //   }
     
-  }, [language]);
+  // }, [language]);
 
-  const acceptRequestClick = (e) => {
-    console.log('accept request')
-    console.log(e.target)
-    console.log('call modal to confirm user selection')
-  }
+  // const acceptRequestClick = (e) => {
+  //   console.log('accept request')
+  //   console.log(e.target)
+  //   console.log('call modal to confirm user selection')
+  // }
 
-  const rejectRequestClick = (e) => {
-    console.log('reject request')
-  }
+  // const rejectRequestClick = (e) => {
+  //   console.log('reject request')
+  // }
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   }
 
-  const removePeerClick = (e) => {
-    console.log('removePeerClick')
-  }
+  // const removePeerClick = (e) => {
+  //   console.log('removePeerClick')
+  // }
 
   return (
     
