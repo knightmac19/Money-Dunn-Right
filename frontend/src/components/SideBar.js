@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLangContext } from "../hooks/useLangContext";
+import { Spanish, English } from './LangText/SideBarText'
 
 import ArrowCircleRightOutlinedIcon from '@mui/icons-material/ArrowCircleRightOutlined';
 import ArrowCircleLeftOutlinedIcon from '@mui/icons-material/ArrowCircleLeftOutlined';
@@ -9,13 +11,26 @@ import { peers } from './peersData'
 
 
 const SideBar = () => {
+  const { language } = useLangContext();
 
+  const [lang, setLang] = useState(English);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   // const [acceptClicks, setAcceptClicks] = useState(0)
   const [acceptIconSize, setAcceptIconSize] = useState('medium')
   // const [acceptIconClass, setAcceptIconClass] = useState('accept-request-icon')
 
-  
+  useEffect(() => {
+    if (language === 'English') {
+      setLang(English);
+    }
+
+    if (language === 'Spanish') {
+      setLang(Spanish);
+    }
+    
+  }, [language]);
+
+
   const acceptRequestClick = (e) => {
     console.log('accept request')
     console.log(e.target)
@@ -41,27 +56,9 @@ const SideBar = () => {
         {sidebarOpen ? <ArrowCircleLeftOutlinedIcon  fontSize="large" onClick={toggleSidebar} /> : <ArrowCircleRightOutlinedIcon className="white-arrow" fontSize="large" onClick={toggleSidebar} /> }
         
       </button>
-      {/* <div className={sidebarOpen ? "lang-container" : "lang-container-hide"}>
-        <button
-          name="english-btn"
-          id={englishFocused}
-          onClick={handleClick}
-
-        >
-          English
-        </button>
-        <button
-          name="spanish-btn"
-          id={spanishFocused}
-          onClick={handleClick}
-        >
-          Español
-        </button>
-        
-      </div> */}
       <div className={sidebarOpen ? "" : "peers-container-hide"}>
         <div className="peers">
-          <ul>My Peers
+          <ul>{lang.peersListText}
             {peers && peers.map((peer) => (
               <li key={peer.id} className="peers-item">{peer.email} 
                 <CloseOutlinedIcon 
@@ -73,7 +70,7 @@ const SideBar = () => {
           </ul>
         </div>
         <div className="peer-requests">
-          <ul>Peer Requests
+          <ul>{lang.peerRequestsText}
             {peerRequests && peerRequests.map((peerRequest) => (
               <li key={peerRequest.id} className="peer-request-item">{peerRequest.email} 
                 <CheckCircleOutlinedIcon  
