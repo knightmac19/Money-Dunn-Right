@@ -54,7 +54,7 @@ const IncomeForm = () => {
 
     const income = { amount, source, date, user_email }
 
-    const response = await fetch('/api/income/', {
+    const response = await fetch('https://money-dunn-right.onrender.com/api/income/', {
       method: 'POST',
       body: JSON.stringify(income),
       headers: {
