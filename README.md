@@ -16,19 +16,24 @@
 <img alt="Express.js" src="https://img.shields.io/badge/express.js-%23404d59.svg?&style=for-the-badge"/>
 <img alt="React" src="https://img.shields.io/badge/react-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
 <img alt="Visual Studio Code" src="https://img.shields.io/badge/VisualStudioCode-0078d7.svg?&style=for-the-badge&logo=visual-studio-code&logoColor=white"/>
+<img alt="Git" src="https://img.shields.io/badge/git-%23F05033.svg?&style=for-the-badge&logo=git&logoColor=white"/>
 <img alt="GitLab" src="https://img.shields.io/badge/gitlab-%23181717.svg?&style=for-the-badge&logo=gitlab&logoColor=white"/>
 <img alt="MongoDB" src ="https://img.shields.io/badge/MongoDB-%234ea94b.svg?&style=for-the-badge&logo=mongodb&logoColor=white"/>
 
 ## <a id="contents"></a> Contents
 
 - [Languages](#languages)
+- [Features](#features)
 - [Motivation](#motivation)
 - [Usage](#usage)
 - [Challenges](#challenges)
 - [Contributors](#contributors)
 - [License](#license)
 
-![Screenshot](./money_dunn_right.png)
+## <a id="features"></a> Features
+
+[Contents](#contents)  
+The app's user-facing content was translated so that users can instantaneously toggle the site between English and Spanish. There's no need to create an account first before adjusting user settings. Thanks to React's virtual DOM this feature is always available. In order to limit the chances of a mobile user accidentally deleting a transaction card by carelessly clicking the trash icon once, a double-click requirement was added. Upon the first click the icon's background changes from gray to red, indicating that the button is now active. By touching (or clicking) anywhere else on the screen that particular button will be deactivated. Rather than requiring a modal or (heaven forbid) an alert asking the user if they're sure they want to delete the transaction, this feature was designed to be intuitive and user-friendly. The 'Hide' button for the transaction form was also inspired by mobile users. If users don't need to add a transaction at the moment, they can save valuable screen real estate by hiding the expense or income form.
 
 ## <a id="motivation"></a> Motivation
 
@@ -49,7 +54,7 @@ During development I tried to follow an AGILE approach. I asked for continual fe
 
 [Contents](#contents)
 
-- [knightmac19](https://github.com/knightmac19)
+- Patrick Dunn // [pmdunn78@gmail.com](mailto:pmdunn78@gmail.com) // [github.com/knightmac19](https://github.com/knightmac19)
 
 ## <a id="questions"></a> Questions
 
