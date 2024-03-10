@@ -30,6 +30,8 @@
 - [Contributors](#contributors)
 - [License](#license)
 
+![Screenshot](./money_dunn_right.png)
+
 ## <a id="features"></a> Features
 
 [Contents](#contents)  
